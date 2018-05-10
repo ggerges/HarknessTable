@@ -3,7 +3,7 @@
     <h1>Posts</h1>
     <div v-if="posts.length > 0" class="table-wrap">
       <div>
-        <router-link v-bind:to="{ name: 'NewPost' }" class="">Add Post</router-link>
+        <router-link v-bind:to="{ name: 'NewPost' }" class="">Add Student</router-link>
       </div>
       <table>
         <tr>
@@ -22,8 +22,8 @@
       </table>
     </div>
     <div v-else>
-      There are no posts.. Lets add one now <br /><br />
-      <router-link v-bind:to="{ name: 'NewPost' }" class="add_post_link">Add Post</router-link>
+      There are no students... Let's add one now <br /><br />
+      <router-link v-bind:to="{ name: 'NewPost' }" class="add_post_link">Add Student</router-link>
     </div>
   </div>
 </template>
@@ -53,6 +53,8 @@ export default {
   }
 }
 </script>
+
+<!-- CSS Style is here right now -->
 <style type="text/css">
 .table-wrap {
   width: 60%;
