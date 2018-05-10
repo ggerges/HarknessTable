@@ -20,9 +20,6 @@
           </td>
         </tr>
       </table>
-      <div>
-        <router-link v-bind:to="{ name: 'testing' }" class="">testing</router-link>
-      </div>
     </div>
     <div v-else>
       There are no students... Let's add one now <br /><br />
