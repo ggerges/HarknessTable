@@ -1,31 +1,19 @@
 <template>
   <div class="hello">
-    <h1>LOGIN</h1>
+    <h1>Hi!</h1>
+    <h2>Create New Account</h2>
     <h2>Email Text Box</h2>
     <h2>Password Text Box</h2>
     <br>
-    <h2>Submit Button</h2>
-    <p>New to Harkness?</p>
     <div>
-      <router-link v-bind:to="{ name: 'NewAccount' }" class="">Create an account.</router-link>
+      <router-link v-bind:to="{ name: 'HomePage' }" class="">Submit</router-link>
     </div>
-    <p>Link to moqup:</p>
-    <ul>
-      <li>
-        <a
-          href="https://app.moqups.com/cmei@bayviewglen.ca/RXNwMvqPpa/view/page/a245a1a13"
-          target="_blank"
-        >
-          Go to Moqup
-        </a>
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'NewAccount',
   data () {
     return {
       msg: 'Welcome to Your Harkness Table App'

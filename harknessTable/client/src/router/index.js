@@ -5,6 +5,9 @@ import Posts from '@/components/Posts'
 import NewPost from '@/components/NewPost'
 import EditPost from '@/components/EditPost'
 import Login from '@/components/Login'
+import NewAccount from '@/components/NewAccount'
+import HomePage from '@/components/HomePage'
+import Class from '@/components/Class'
 
 Vue.use(Router)
 
@@ -34,6 +37,21 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/newaccount',
+      name: 'NewAccount',
+      component: NewAccount
+    },
+    {
+      path: '/homepage',
+      name: 'HomePage',
+      component: HomePage
+    },
+    {
+      path: '/class',
+      name: 'Class',
+      component: Class
     }
   ]
 })
