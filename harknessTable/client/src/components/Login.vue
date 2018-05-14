@@ -1,28 +1,25 @@
 <template>
   <div class="hello">
     <h1>LOGIN</h1>
-    <h2>Essential Links</h2>
+    <h2>Email Text Box</h2>
+    <h2>Password Text Box</h2>
+    <br>
+    <h2>Submit Button</h2>
+    <p>Link to moqup:</p>
     <ul>
       <li>
         <a
-          href="https://vuejs.org"
+          href="https://app.moqups.com/cmei@bayviewglen.ca/RXNwMvqPpa/view/page/a245a1a13"
           target="_blank"
         >
-          Core Docs
+          Go to Moqup
         </a>
       </li>
     </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-    </ul>
+    <br><br>
+    <div>
+      <router-link v-bind:to="{ name: 'NewPost' }" class="">(testing) Add Student</router-link>
+     </div>
   </div>
 </template>
 
@@ -31,7 +28,7 @@ export default {
   name: 'Testing',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Harkness Table App'
     }
   }
 }
