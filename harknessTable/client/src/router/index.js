@@ -4,7 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Posts from '@/components/Posts'
 import NewPost from '@/components/NewPost'
 import EditPost from '@/components/EditPost'
-import testing from '@/components/testing'
+import Testing from '@/components/Testing'
 
 Vue.use(Router)
 
@@ -29,6 +29,11 @@ export default new Router({
       path: '/posts/:id',
       name: 'EditPost',
       component: EditPost
+    },
+    {
+      path: '/testing',
+      name: 'Testing',
+      component: Testing
     }
   ]
 })
