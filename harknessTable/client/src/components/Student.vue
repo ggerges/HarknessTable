@@ -1,15 +1,8 @@
 <template>
   <div class="hello">
-    <h1>Class</h1>
+    <h1>Student</h1>
     <div>
       <router-link v-bind:to="{ name: 'NewAccount' }" class="">Start New Harkness</router-link>
-    </div>
-    <h2>My Classes</h2>
-    <div>
-      <router-link v-bind:to="{ name: 'NewAccount' }" class="">Add Class</router-link>
-    </div>
-    <div>
-      <router-link v-bind:to="{ name: 'Student' }" class="">Go to Student</router-link>
     </div>
   </div>
 </template>

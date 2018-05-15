@@ -8,6 +8,7 @@ import Login from '@/components/Login'
 import NewAccount from '@/components/NewAccount'
 import HomePage from '@/components/HomePage'
 import Class from '@/components/Class'
+import Student from '@/components/Student'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/class',
       name: 'Class',
       component: Class
+    },
+    {
+      path: '/student',
+      name: 'Student',
+      component: Student
     }
   ]
 })
