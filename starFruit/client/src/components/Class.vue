@@ -16,6 +16,7 @@
     <div>
       <router-link v-bind:to="{ name: 'Student' }" class="button is-info is-outlined">Go to Student</router-link>
     </div>
+    <!--
     <section>
         <div class="block">
             <b-switch v-model="openOnFocus">
@@ -37,19 +38,42 @@
                 @select="option => selected = option">
             </b-autocomplete>
         </b-field>
-    </section>
+    </section>-->
     </div>
 </template>
 
 <script>
-  export default {
-    name: 'Login',
-    data () {
-      return {
-        msg: 'Welcome to Your Harkness Table App'
-      }
+export default {
+  name: 'Login',
+  data () {
+    return {
+      msg: 'Welcome to Your Harkness Table App'
     }
   }
+}
+/*const data = require('@/assets/data_test.json')
+export default {
+  name: 'Login',
+  data () {
+    return {
+      data,
+      keepFirst: false,
+      openOnFocus: false,
+      name: '',
+      selected: null
+    }
+  },
+  computed: {
+    filteredDataObj() {
+      return this.data.filter((option) => {
+        return option.user.first_name
+        .toString()
+        .toLowerCase()
+        .indexOf(this.name.toLowerCase()) >= 0
+      })
+    }
+  }
+}*/
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

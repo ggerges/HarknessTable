@@ -24,14 +24,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'Login',
-    data () {
-      return {
-        msg: 'Welcome to Your Harkness Table App'
-      }
+export default {
+  name: 'Login',
+  data () {
+    return {
+      msg: 'Welcome to Your Harkness Table App'
     }
   }
+}
 </script>
 <!-- script type "text/javascript" src="client/jquery/jquery.js"></script>-->
 
