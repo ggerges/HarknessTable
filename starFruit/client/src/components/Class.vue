@@ -1,4 +1,5 @@
 <template>
+
   <div class="hello">
     <h1>Class</h1>
     <div class="container is-fullhd">
@@ -16,31 +17,18 @@
     <div>
       <router-link v-bind:to="{ name: 'Student' }" class="button is-info is-outlined">Go to Student</router-link>
     </div>
-    <!--
     <section>
-        <div class="block">
-            <b-switch v-model="openOnFocus">
-                Open dropdown on focus
-            </b-switch>
-            <b-switch v-model="keepFirst">
-                Keep-first <small>(will always have first option pre-selected)</small>
-            </b-switch>
-        </div>
-        <p class="content"><b>Selected:</b> {{ selected }}</p>
-        <b-field label="Find a name">
-            <b-autocomplete
-                v-model="name"
-                placeholder="e.g. Anne"
-                :keep-first="keepFirst"
-                :open-on-focus="openOnFocus"
-                :data="filteredDataObj"
-                field="user.first_name"
-                @select="option => selected = option">
-            </b-autocomplete>
+        <b-field position="is-centered">
+            <b-input placeholder="Search..." type="search" icon="magnify">
+            </b-input>
+            <p class="control">
+                <button class="button is-info">Search</button>
+            </p>
         </b-field>
-    </section>-->
+    </section>
     </div>
 </template>
+<link rel="stylesheet" href="../startfruit/client/src/components/styles.css">
 
 <script>
 export default {
@@ -51,32 +39,5 @@ export default {
     }
   }
 }
-/*const data = require('@/assets/data_test.json')
-export default {
-  name: 'Login',
-  data () {
-    return {
-      data,
-      keepFirst: false,
-      openOnFocus: false,
-      name: '',
-      selected: null
-    }
-  },
-  computed: {
-    filteredDataObj() {
-      return this.data.filter((option) => {
-        return option.user.first_name
-        .toString()
-        .toLowerCase()
-        .indexOf(this.name.toLowerCase()) >= 0
-      })
-    }
-  }
-}*/
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
