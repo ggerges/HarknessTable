@@ -14,6 +14,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@mdi/font": "^2.3.54",
+    "@mdi/svg": "^2.3.54",
     "axios": "^0.18.0",
     "buefy": "^0.6.5",
     "vue": "^2.5.2",

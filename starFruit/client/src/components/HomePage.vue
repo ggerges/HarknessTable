@@ -1,6 +1,40 @@
 <template>
   <div class="hello">
-    <h1>HOME PAGE</h1>
+    <h1 class="title is-1">HOME PAGE</h1>
+    <br><br>
+    <i class="fas fa-camera-retro fa-xs"></i>
+
+    <!-- START NAV -->
+    <nav class="navbar is-white">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item brand-text" href="../">Bulma Admin</a>
+                <div class="navbar-burger burger" data-target="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="admin.html">
+            Home
+          </a>
+                    <a class="navbar-item" href="admin.html">
+            Orders
+          </a>
+                    <a class="navbar-item" href="admin.html">
+            Payments
+          </a>
+                    <a class="navbar-item" href="admin.html">
+            Exceptions
+          </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <br><br>
     <div class="container">
         <div class="columns">
             <div class="column is-3">
@@ -17,6 +51,25 @@
             </div>
           </div>
         </div>
+        <section class="info-tiles">
+                    <div class="tile is-ancestor has-text-centered">
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="title">CGC1D</p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="title">ENG4U</p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="title">HZT4U</p>
+                            </article>
+                        </div>
+                    </div>
+        </section>
   </div>
 </template>
 
@@ -33,12 +86,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.info-tiles div {
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 40px;
+}
+
 .container div {
   text-align: left;
   padding-left: 100px;
-}
-h1, h2 {
-  font-weight: normal;
 }
 ul {
   list-style-type: none;
