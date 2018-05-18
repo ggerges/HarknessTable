@@ -26,6 +26,8 @@
 	is-light
 	is-white
 
+	<link rel="stylesheet" href="../startfruit/client/src/components/styles.css">
+
 	const data = require('@/assets/data_test.json')
   export default {
     name: 'Class',

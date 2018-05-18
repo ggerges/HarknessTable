@@ -1,5 +1,4 @@
 <template>
-
   <div class="hello">
     <h1>Class</h1>
     <div class="container is-fullhd">
@@ -28,7 +27,6 @@
     </section>
     </div>
 </template>
-<link rel="stylesheet" href="../startfruit/client/src/components/styles.css">
 
 <script>
 export default {
@@ -41,3 +39,10 @@ export default {
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+
+<style type="text/css">
+h1 {
+  font-size: 52px;
+  text-align: center;
+}
+</style>

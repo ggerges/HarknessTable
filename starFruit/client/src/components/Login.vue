@@ -35,9 +35,9 @@ export default {
 </script>
 <!-- script type "text/javascript" src="client/jquery/jquery.js"></script>-->
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add "scoped" attribute to limit CSS to this component only (scoped for child css) -->
 <style scoped>
-h1, h2 {
+h1{
   font-weight: normal;
 }
 ul {
