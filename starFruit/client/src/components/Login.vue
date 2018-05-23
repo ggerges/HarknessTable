@@ -1,6 +1,13 @@
 <template>
   <div class="hello">
     <h1>LOGIN</h1>
+    <br>
+    <h2>For table testing purposes:</h2>
+    <br>
+   <div>
+      <router-link v-bind:to="{ name: 'Review' }" class="">Test table.</router-link>
+    </div>
+    <br>
     <h2>Email Text Box</h2>
     <h2>Password Text Box</h2>
     <br>
