@@ -2,7 +2,6 @@
   <div class="hello">
     <h1 class="title is-1">HOME PAGE</h1>
     <br><br>
-    <i class="fas fa-camera-retro fa-xs"></i>
 
     <!-- START NAV -->
     <nav class="navbar is-white">
