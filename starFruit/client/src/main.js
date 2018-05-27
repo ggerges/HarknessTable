@@ -14,6 +14,9 @@ import { Drag, Drop } from 'vue-drag-drop'
 // Tabs.vue
 import {Tabs, Tab} from 'vue-tabs-component'
 
+// VueDraggable 
+import VueDraggable from 'vue-draggable'
+
 Vue.use(Buefy)
 // <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
 
@@ -23,6 +26,8 @@ Vue.component('drop', Drop)
 // Tabs.vue
 Vue.component('tabs', Tabs)
 Vue.component('tab', Tab)
+
+Vue.use(VueDraggable)
 
 Vue.config.productionTip = false
 
