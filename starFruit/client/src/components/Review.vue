@@ -1,6 +1,7 @@
 <template>
-  <div class="hello">
+  <div class="posts">
     <h1>REVIEW</h1>
+    <br><br>
     <div v-if="posts.length > 0" class="table-wrap">
       <table>
           <tr>
@@ -17,9 +18,6 @@
             </td>
           </tr>
         </table>
-      <div>
-        <router-link v-bind:to="{ name: 'NewAccount' }" class="">Create an account.</router-link>
-      </div>
     </div>
     <div v-else>
       There are no students... Let's add one now <br /><br />
@@ -29,31 +27,63 @@
 </template>
 
 <script>
+import PostsService from '@/services/PostsService'
 export default {
-  name: 'Login',
+  name: 'review',
   data () {
     return {
-      msg: 'Welcome to Your Harkness Table App'
+      posts: []
+    }
+  },
+  mounted () {
+    this.getPosts()
+  },
+  methods: {
+    async getPosts () {
+      const response = await PostsService.fetchPosts()
+      this.posts = response.data.posts
+    },
+    async deletePost (id) {
+      const response = await PostsService.deletePost(id)
+      this.posts = response.data.posts
+      this.$router.push({name: 'Posts'})
     }
   }
 }
 </script>
-<!-- script type "text/javascript" src="client/jquery/jquery.js"></script>-->
 
-<!-- Add "scoped" attribute to limit CSS to this component only (scoped for child css) -->
-<style scoped>
-h1{
-  font-weight: normal;
+<style type="text/css">
+.table-wrap {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+table th, table tr {
+  text-align: left;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+table thead {
+  background: #f2f2f2;
+}
+table tr td {
+  padding: 10px;
+}
+table tr:nth-child(odd) {
+  background: #f2f2f2;
+}
+table tr:nth-child(1) {
+  background: #4d7ef7;
+  color: #fff;
 }
 a {
-  color: #42b983;
+  color: #4d7ef7;
+  text-decoration: none;
+}
+a.add_post_link {
+  background: #4d7ef7;
+  color: #fff;
+  padding: 10px 80px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
 }
 </style>

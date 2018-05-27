@@ -11,9 +11,7 @@ import 'buefy/lib/buefy.css'
 // Tabs.vue
 import {Tabs, Tab} from 'vue-tabs-component'
 
-Vue.use(Buefy, {
-	defaultIconPack: 'mdi'
-})
+Vue.use(Buefy)
 // <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
 
 // Tabs.vue
