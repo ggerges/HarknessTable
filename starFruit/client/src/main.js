@@ -8,11 +8,17 @@ import router from './router'
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
 
+// Drag, Drop
+import { Drag, Drop } from 'vue-drag-drop'
+
 // Tabs.vue
 import {Tabs, Tab} from 'vue-tabs-component'
 
 Vue.use(Buefy)
 // <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
+
+Vue.component('drag', Drag)
+Vue.component('drop', Drop)
 
 // Tabs.vue
 Vue.component('tabs', Tabs)

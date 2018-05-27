@@ -2,43 +2,28 @@
   <div class="hello">
     <h1>Harkness Table</h1>
     <img src="../assets/starfruit.jpeg">
+    <drag class="drag"
+      :image="require('../assets/starfruit.jpeg')"
+      :transfer-data="{ example: 'drag-image' }">
+      drag
+    </drag>
+    <drop class="drop" @drop="handleDrop">drop</drop>
     <br><br>
   </div>
 </template>
 
 <script>
+import { Drag, Drop } from 'vue-drag-drop';
 export default {
   name: 'HarknessTable',
-  data () {
-    return {
-      msg: 'Welcome to Your Harkness Table App'
+  components: { Drag, Drop },
+  methods: {
+    handleDrop(data) {
+      alert('You dropped with data: ${JSON.stringify(data)}')
     }
   }
-
-  /* methods: {
-    drag () {
-      function allowDrop (ev) {
-        ev.preventDefault()
-      }
-
-      function drag (ev) {
-        ev.dataTransfer.setData('text', ev.target.id)
-      }
-
-      function drop (ev) {
-        ev.preventDefault()
-        var data = ev.dataTransfer.getData('text')
-        ev.target.appendChild(document.getElementById(data))
-      }
-    }
-  } */
 }
 </script>
 
 <style type="text/css">
-.table-wrap {
-  width: 60%;
-  margin: 0 auto;
-  text-align: center;
-}
 </style>
