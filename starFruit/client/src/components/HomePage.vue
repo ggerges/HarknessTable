@@ -1,13 +1,12 @@
 <template>
   <div class="hello">
-    <h1 class="title is-1">HOME PAGE</h1>
+    <h1>HOME PAGE</h1>
     <br><br>
 
     <!-- START NAV -->
     <nav class="navbar is-white">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item brand-text" href="../">Bulma Admin</a>
                 <div class="navbar-burger burger" data-target="navMenu">
                     <span></span>
                     <span></span>
