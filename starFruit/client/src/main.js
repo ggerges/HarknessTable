@@ -13,9 +13,15 @@ import { Drag, Drop } from 'vue-drag-drop'
 
 // Tabs.vue
 import {Tabs, Tab} from 'vue-tabs-component'
-
+// jQuery
+import jQuery from 'jquery'
 // VueDraggable
 import VueDraggable from 'vue-draggable'
+
+// bootStrap
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+global.jQuery = jQuery
 
 Vue.use(Buefy)
 // <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
@@ -29,6 +35,7 @@ Vue.component('tab', Tab)
 
 Vue.use(VueDraggable)
 
+Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

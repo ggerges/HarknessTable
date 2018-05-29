@@ -29,9 +29,9 @@
   </div>
 </template>
 
-<script>
+<script>/*
 export default {
-   data: {
+  data: {
     options: {
       // dropzoneSelector: 'ul',
       // draggableSelector: 'li',
@@ -48,7 +48,7 @@ export default {
     }
   }
 }
-/*
+
 import { Drag, Drop } from 'vue-drag-drop'
 export default {
   name: 'HarknessTable',
