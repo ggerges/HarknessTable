@@ -9,9 +9,9 @@
         <li>Item 3</li>
       </ul>
       <ul>
-          <li>Item 4</li>
-          <li>Item 5</li>
-          <li>Item 6</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
       </ul>
     </div>
     <!--<canvas ref="myCanvas" width="800" height="500"></canvas>-->
