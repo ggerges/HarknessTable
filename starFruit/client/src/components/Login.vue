@@ -1,15 +1,18 @@
 <template>
+
   <div class="hello">
     <h1>LOGIN</h1>
     <br>
-    <h2>For table testing purposes:</h2>
-    <br>
-   <div>
+    <div id = "greyBox"></div>
+   <div id = "items">
+    <div>
       <router-link v-bind:to="{ name: 'Review' }" class="">Test table.</router-link>
     </div>
     <br>
-    <h2>Email Text Box</h2>
-    <h2>Password Text Box</h2>
+    <input type="text" placeholder="Enter Email" name="email">
+    <br>
+    <br>
+    <input type="text" name = "password" placeholder="Enter Password">
     <br>
     <h2>Submit Button</h2>
     <p>New to Harkness?</p>
@@ -28,9 +31,11 @@
       </li>
     </ul>
   </div>
+</div>
 </template>
 
 <script>
+
 export default {
   name: 'Login',
   data () {
@@ -44,6 +49,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only (scoped for child css) -->
 <style scoped>
+#items{
+ 
+margin-top: -38%;
+
+
+}
+#greyBox{
+  width: 300px;
+  height: 500px;
+  background-color: #A5A3A3;
+ 
+  border-radius: 20px;
+  margin:3%;
+
+}
 h1{
   font-weight: normal;
 }
