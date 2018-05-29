@@ -3,6 +3,9 @@
   <div class="login">
      <div class="wrapper">
     <form class="form-signin">
+      <div class = "logo">
+      <img src = "../assets/starfruit.jpg">
+      </div>
       <h2 class="form-signin-heading">Please login</h2>
       <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
@@ -12,6 +15,7 @@
       <button class="btn btn-lg btn-primary btn-block" v-on:click.native ="greet" >Login</button>
     </form>
   </div>
+
   <!--  <h1>LOGIN</h1>
     <br>
     <div id = "greyBox"></div>
@@ -48,13 +52,7 @@
 
 <script>
 export default{
-  data: {
-      form: {
-        email: '',
-        password: '',
-      }
-    }
-  }
+}
 
 </script>
 <!-- script type "text/javascript" src="client/jquery/jquery.js"></script>-->
