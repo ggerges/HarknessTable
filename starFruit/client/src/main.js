@@ -14,7 +14,7 @@ import { Drag, Drop } from 'vue-drag-drop'
 // Tabs.vue
 import {Tabs, Tab} from 'vue-tabs-component'
 
-// VueDraggable 
+// VueDraggable
 import VueDraggable from 'vue-draggable'
 
 Vue.use(Buefy)

@@ -50,19 +50,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only (scoped for child css) -->
 <style scoped>
 #items{
- 
 margin-top: -38%;
-
-
 }
 #greyBox{
   width: 300px;
   height: 500px;
   background-color: #A5A3A3;
- 
   border-radius: 20px;
   margin:3%;
-
 }
 h1{
   font-weight: normal;
