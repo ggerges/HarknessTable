@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// VueDraggableResizeable
+import VueDraggableResizable from 'vue-draggable-resizable'
+
 // Buefy
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
@@ -18,10 +21,12 @@ import jQuery from 'jquery'
 // VueDraggable
 import VueDraggable from 'vue-draggable'
 
-// bootStrap
+// bootStrap -- don't think we need this
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
-global.jQuery = jQuery
+global.jQuery = jQuery // is this for bootstrap GG? -CM
+
+Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 Vue.use(Buefy)
 // <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
@@ -36,6 +41,7 @@ Vue.component('tab', Tab)
 Vue.use(VueDraggable)
 
 Vue.use(BootstrapVue)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
