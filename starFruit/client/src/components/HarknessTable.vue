@@ -1,7 +1,12 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>Harkness Table</h1>
     <br>
+    <div class="overview">
+      <label>Discussion Topic: </label><input type="text" v-model="topic"><br>
+      <label>No. Students: </label><input type="text" v-model="numStudents">
+    </div>
+
     <div class="studentSpot">
       <vue-draggable-resizable :resizable="false" :w="100" :h="100" :x="100" :y="100">
         <p>Student 1</p>
@@ -9,7 +14,7 @@
     </div>
 
     <div class="ovalTable">
-      <vue-draggable-resizable :draggable="false" :resizable="false" :w="500" :h="100"  :x="400" :y="300">
+      <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400"  :x="400" :y="400">
         <img src="../assets/ovalTable.png">
       </vue-draggable-resizable>
     </div>
@@ -22,13 +27,29 @@ export default {
   name: 'HarknessTable',
   data () {
     return {
-      msg: 'Welcome to Your Harkness Table App'
+      topic: 'testing 123',
+      numStudents: 14,
+      width: 0,
+      height: 0,
+      x: 1,
+      y: 0
+    }
+  },
+  methods: {
+    onResize: function (x, y, width, height) {
+      this.x = x
+      this.y = y
+      this.width = width
+      this.height = height
     }
   }
 }
 </script>
 
 <style type="text/css">
+.overview label {
+  color: #47DAE7;
+}
 .studentSpot div {
   height: 500px;
   width: 500px;
