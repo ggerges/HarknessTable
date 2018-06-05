@@ -8,9 +8,15 @@
     </div>
 
     <div class="studentSpot">
-      <vue-draggable-resizable :resizable="false" :w="100" :h="100" :x="100" :y="100">
-        <p>Student 1</p>
-      </vue-draggable-resizable>
+      <span v-for="numStudent in numStudents">
+        <vue-draggable-resizable :resizable="false" :w="100" :h="100" :x="100" :y="100">
+          <p>Student 1</p>
+        </vue-draggable-resizable>
+      </span>
+    </div>
+
+    <div>
+      <span v-for="n in numStudents">{{ n }} </span>
     </div>
 
     <div class="ovalTable">
@@ -28,8 +34,9 @@ export default {
   data () {
     return {
       topic: 'testing 123',
-      numStudents: 14,
-      width: 0,
+      numStudents: 4,
+      counter: 4,
+      width: 0, // testing
       height: 0,
       x: 1,
       y: 0
