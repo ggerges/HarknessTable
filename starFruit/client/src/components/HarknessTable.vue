@@ -6,7 +6,7 @@
       <label>Discussion Topic: </label><input type="text" v-model="topic"><br>
       <label>No. Students: </label><input type="text" v-model="numStudents">
     </div>
-
+    <button @click="testing(students)">here</button>
     <section>
       <div id="timer">
         <span id="minutes">{{ minutes }}</span>
@@ -144,6 +144,11 @@ export default {
     }
   },
   methods: {
+    testing: function (students) {
+      for (var i = 0; i < this.students.length; i++) {
+        console.log(this.students[i].name)
+      }
+    },
     startTimer: function () {
       this.timer = setInterval(() => this.countdown(), 1000)
       this.resetButton = true
