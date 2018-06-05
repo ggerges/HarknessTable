@@ -1,6 +1,6 @@
 <template>
   <div class="posts">
-    <h1>Add Student</h1>
+    <h1>Add Post</h1>
       <div class="form">
         <div>
           <input type="text" name="title" placeholder="TITLE" v-model="title">
@@ -18,7 +18,7 @@
 <script>
 import PostsService from '@/services/PostsService'
 export default {
-  name: 'NewStudent',
+  name: 'NewPost',
   data () {
     return {
       title: '',
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    async addStudent () {
+    async addPost () {
       await PostsService.addPost({
         title: this.title,
         description: this.description

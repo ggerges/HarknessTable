@@ -1,52 +1,52 @@
 <template>
-  <div class="students">
+  <div class="posts">
     <h1>REVIEW</h1>
     <br><br>
-    <div v-if="students.length > 0" class="table-wrap">
+    <div v-if="posts.length > 0" class="table-wrap">
       <table>
           <tr>
             <td>Title</td>
             <td width="550">Description</td>
             <td width="100" align="center">Action</td>
           </tr>
-          <tr v-for="student in students" :key="student.id">
-            <td>{{ student.title }}</td>
-            <td>{{ student.description }}</td>
+          <tr v-for="post in posts" :key="post.id">
+            <td>{{ post.title }}</td>
+            <td>{{ post.description }}</td>
             <td align="center">
-              <router-link v-bind:to="{ name: 'EditStudent', params: { id: student._id } }">Edit</router-link> |
-              <a href="#" @click="deleteStudent(student._id)">Delete</a>
+              <router-link v-bind:to="{ name: 'EditPost', params: { id: post._id } }">Edit</router-link> |
+              <a href="#" @click="deletePost(post._id)">Delete</a>
             </td>
           </tr>
         </table>
     </div>
     <div v-else>
       There are no students... Let's add one now <br /><br />
-      <router-link v-bind:to="{ name: 'NewStudent' }" class="add_student_link">Add Student</router-link>
+      <router-link v-bind:to="{ name: 'NewPost' }" class="add_post_link">Add Student</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import StudentsService from '@/services/StudentsService'
+import PostsService from '@/services/PostsService'
 export default {
   name: 'review',
   data () {
     return {
-      students: []
+      posts: []
     }
   },
   mounted () {
-    this.getStudents()
+    this.getPosts()
   },
   methods: {
-    async getStudents () {
-      const response = await StudentsService.fetchStudents()
-      this.students = response.data.students
+    async getPosts () {
+      const response = await PostsService.fetchPosts()
+      this.posts = response.data.posts
     },
-    async deleteStudent (id) {
-      const response = await StudentsService.deleteStudent(id)
-      this.students = response.data.students
-      this.$router.push({name: 'Students'})
+    async deletePost (id) {
+      const response = await PostsService.deletePost(id)
+      this.posts = response.data.posts
+      this.$router.push({name: 'Posts'})
     }
   }
 }
@@ -78,7 +78,7 @@ a {
   color: #4d7ef7;
   text-decoration: none;
 }
-a.add_student_link {
+a.add_post_link {
   background: #4d7ef7;
   color: #fff;
   padding: 10px 80px;
