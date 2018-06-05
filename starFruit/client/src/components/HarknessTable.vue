@@ -41,9 +41,6 @@
         </button>
       </div>
     </section>
-
-    <!-- <button v-on:click="counter += 1">Add 1</button> -->
-    <!-- <p>The button above has been clicked {{ counter }} times.</p> -->
     <div class="ovalTable">
       <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400"  :x="350" :y="400">
         <img src="../assets/ovalTable.png">
@@ -56,7 +53,7 @@
           <br>
           <p>{{student.name}}</p>
           <section id="timer">
-            <span id="minutes">{{ student.minutes }}</span>
+            <span id="minutes" v-bind:minutes="student.minutes">{{ student.minutes }}</span>
             <span id="middle">:</span>
             <span id="seconds">{{ student.seconds }}</span>
           </section>
@@ -111,10 +108,10 @@ export default {
       resetButton: false,
       students: [
         {
-          name: 'Samantha Chim',
+          name: 'Aliqyan Tapia',
           minutes: 0,
           seconds: 0,
-          // time: this.minutes + ' : ' + this.seconds,
+          fullTime: '',
           timer: null,
           totalTime: 0,
           resetButton: false
@@ -123,6 +120,7 @@ export default {
           name: 'Lily Laevens',
           minutes: 2,
           seconds: 0,
+          fullTime: '',
           timer: null,
           totalTime: 0,
           resetButton: false
@@ -131,6 +129,7 @@ export default {
           name: 'Chris Alexiev',
           minutes: 10,
           seconds: 0,
+          fullTime: '',
           timer: null,
           totalTime: 0,
           resetButton: false

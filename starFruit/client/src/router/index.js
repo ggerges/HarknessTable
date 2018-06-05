@@ -9,7 +9,6 @@ import NewAccount from '@/components/NewAccount'
 import HomePage from '@/components/HomePage'
 import Class from '@/components/Class'
 import AddClass from '@/components/AddClass'
-import Student from '@/components/Student'
 import AddStudent from '@/components/AddStudent'
 import HarknessTable from '@/components/HarknessTable'
 import HarknessTableTwo from '@/components/HarknessTableTwo'
@@ -63,11 +62,6 @@ export default new Router({
       path: '/addClass',
       name: 'AddClass',
       component: AddClass
-    },
-    {
-      path: '/student',
-      name: 'Student',
-      component: Student
     },
     {
       path: '/addStudent',
