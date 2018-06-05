@@ -9,7 +9,6 @@
 
     <section>
       <h2 class="title is-6">{{title}}</h2>
-  
       <div id="timer">
         <span id="minutes">{{ minutes }}</span>
         <span id="middle">:</span>
@@ -17,29 +16,29 @@
       </div>
 
       <div id="buttons">
-    <!--     Start TImer -->
-        <button 
-          id="start" 
-          class="button is-dark is-large" 
+      <!--     Start Timer -->
+        <button
+          id="start"
+          class="button is-light is-large"
           v-if="!timer"
           @click="startTimer">
-            <i class="far fa-play-circle"></i>
+            <img src="../assets/start.png" width="30" height="30">
         </button>
-    <!--     Pause Timer -->
-        <button 
-          id="stop" 
-          class="button is-dark is-large" 
+        <!--     Pause Timer -->
+        <button
+          id="stop"
+          class="button is-light is-large"
           v-if="timer"
           @click="stopTimer">
-            <i class="far fa-pause-circle"></i>
+            <img src="../assets/pause.png" width="30" height="30">
         </button>
-    <!--     Restart Timer -->
-        <button 
-          id="reset" 
-          class="button is-dark is-large" 
+        <!--     Restart Timer -->
+        <button
+          id="reset"
+          class="button is-light is-large"
           v-if="resetButton"
           @click="resetTimer">
-            <i class="fas fa-undo"></i>
+            <img src="../assets/restart.png" width="30" height="30">
         </button>
       </div>
     </section>
@@ -56,9 +55,9 @@
       <span v-for="student in students" v-bind:key="student.id">
         <vue-draggable-resizable :resizable="false" :w="120" :h="120" :x="100" :y="100">
           <p>{{student.name}}</p>
-          <p>min: {{student.minutes}}</p>
+          <!-- <p>min: {{student.minutes}}</p>
           <button v-on:click="student.minutes += 1">Start</button>
-          <button v-on:click="student.minutes += 1">End</button>
+          <button v-on:click="student.minutes += 1">End</button> -->
           <!-- <img src="../assets/starfruit.jpg"> -->
         </vue-draggable-resizable>
       </span>
@@ -82,7 +81,8 @@ export default {
         {
           name: 'Samantha Chim',
           minutes: 0,
-          second: 0
+          seconds: 0,
+          time: this.minutes + ' : ' + this.seconds
         },
         {
           name: 'Lily Laevens',
@@ -104,36 +104,36 @@ export default {
     }
   },
   methods: {
-    startTimer: function() {
-      this.timer = setInterval(() => this.countdown(), 1000);
-      this.resetButton = true;
+    startTimer: function () {
+      this.timer = setInterval(() => this.countdown(), 1000)
+      this.resetButton = true
     },
-    stopTimer: function() {
-      clearInterval(this.timer);
-      this.timer = null;
-      this.resetButton = true;
+    stopTimer: function () {
+      clearInterval(this.timer)
+      this.timer = null
+      this.resetButton = true
     },
-    resetTimer: function() {
-      this.totalTime = 0;
-      clearInterval(this.timer);
-      this.timer = null;
-      this.resetButton = false;
+    resetTimer: function () {
+      this.totalTime = 0
+      clearInterval(this.timer)
+      this.timer = null
+      this.resetButton = false
     },
-    padTime: function(time) {
-      return (time < 10 ? '0' : '') + time;
+    padTime: function (time) {
+      return (time < 10 ? '0' : '') + time
     },
-    countdown: function() {
-      this.totalTime++;
+    countdown: function () {
+      this.totalTime++
     }
   },
   computed: {
-    minutes: function() {
-      const minutes = Math.floor(this.totalTime / 60);
-      return this.padTime(minutes);
+    minutes: function () {
+      const minutes = Math.floor(this.totalTime / 60)
+      return this.padTime(minutes)
     },
-    seconds: function() {
-      const seconds = this.totalTime - (this.minutes * 60);
-      return this.padTime(seconds);
+    seconds: function () {
+      const seconds = this.totalTime - (this.minutes * 60)
+      return this.padTime(seconds)
     }
   }
   /* ,
