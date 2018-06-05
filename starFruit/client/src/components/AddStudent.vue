@@ -1,5 +1,5 @@
 <template>
-  <div class="students">
+  <div class="posts">
     <h1>Add Student</h1>
       <div class="form">
         <div>
@@ -9,14 +9,14 @@
           <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
         </div>
         <div>
-          <button class="app_student_btn" @click="addStudent">Add</button>
+          <button class="app_post_btn" @click="addPost">Add</button>
         </div>
       </div>
   </div>
 </template>
 
 <script>
-import StudentsService from '@/services/StudentsService'
+import PostsService from '@/services/PostsService'
 export default {
   name: 'AddStudent',
   data () {
@@ -26,12 +26,12 @@ export default {
     }
   },
   methods: {
-    async addStudent () {
-      await StudentsService.addStudent({
+    async addPost () {
+      await PostsService.add({
         title: this.title,
         description: this.description
       })
-      this.$router.push({ name: 'Students' })
+      this.$router.push({ name: 'Posts' })
     }
   }
 }
@@ -47,7 +47,7 @@ export default {
 .form div {
   margin: 20px;
 }
-.app_student_btn {
+.app_post_btn {
   background: #4d7ef7;
   color: #fff;
   padding: 10px 80px;

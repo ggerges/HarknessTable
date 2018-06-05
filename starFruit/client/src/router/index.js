@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import Students from '@/components/Students'
-import NewStudent from '@/components/NewStudent'
-import EditStudent from '@/components/EditStudent'
+import Posts from '@/components/Posts'
+import NewPost from '@/components/NewPost'
+import EditPost from '@/components/EditPost'
 import Login from '@/components/Login'
 import NewAccount from '@/components/NewAccount'
 import HomePage from '@/components/HomePage'
@@ -25,19 +25,19 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/students',
-      name: 'Students',
-      component: Students
+      path: '/posts',
+      name: 'Posts',
+      component: Posts
     },
     {
-      path: '/students/new',
-      name: 'NewStudent',
-      component: NewStudent
+      path: '/posts/new',
+      name: 'NewPost',
+      component: NewPost
     },
     {
-      path: '/students/:id',
-      name: 'EditStudent',
-      component: EditStudent
+      path: '/posts/:id',
+      name: 'EditPost',
+      component: EditPost
     },
     {
       path: '/login',
@@ -45,12 +45,12 @@ export default new Router({
       component: Login
     },
     {
-      path: '/newAccount',
+      path: '/newaccount',
       name: 'NewAccount',
       component: NewAccount
     },
     {
-      path: '/homePage',
+      path: '/homepage',
       name: 'HomePage',
       component: HomePage
     },

@@ -10,9 +10,9 @@ app.use(cors())
 
 app.listen(process.env.PORT || 8081)
 
-// connection with database called students
+// connection with database called posts
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/students');
+mongoose.connect('mongodb://localhost:27017/posts');
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
 db.once("open", function(callback){
@@ -21,58 +21,58 @@ db.once("open", function(callback){
 
 
 
-// Student model 
-var Student = require("../models/student");
+// Post model 
+var Post = require("../models/post");
 
-// CREATE: Add new student
-app.student('/students', (req, res) => {
+// CREATE: Add new post
+app.post('/posts', (req, res) => {
   var db = req.db;
   var title = req.body.title;
   var description = req.body.description;
-  var new_student = new Student({
+  var new_post = new Post({
     title: title,
     description: description
   })
 
-  new_student.save(function (error) {
+  new_post.save(function (error) {
     if (error) {
       console.log(error)
     }
     res.send({
       success: true,
-      message: 'Student saved successfully!'
+      message: 'Post saved successfully!'
     })
   })
 })
 
-// READ: Fetch all students in descending order
-app.get('/students', (req, res) => {
-  Student.find({}, 'title description', function (error, students) {
+// READ: Fetch all posts in descending order
+app.get('/posts', (req, res) => {
+  Post.find({}, 'title description', function (error, posts) {
     if (error) { console.error(error); }
     res.send({
-      students: students
+      posts: posts
     })
   }).sort({_id:-1})
 })
 
-// UPDATE: Fetch single student
-app.get('/student/:id', (req, res) => {
+// UPDATE: Fetch single post
+app.get('/post/:id', (req, res) => {
   var db = req.db;
-  Student.findById(req.params.id, 'title description', function (error, student) {
+  Post.findById(req.params.id, 'title description', function (error, post) {
     if (error) { console.error(error); }
-    res.send(student)
+    res.send(post)
   })
 })
 
-// Update a student
-app.put('/students/:id', (req, res) => {
+// Update a post
+app.put('/posts/:id', (req, res) => {
   var db = req.db;
-  Student.findById(req.params.id, 'title description', function (error, student) {
+  Post.findById(req.params.id, 'title description', function (error, post) {
     if (error) { console.error(error); }
 
-    student.title = req.body.title
-    student.description = req.body.description
-    student.save(function (error) {
+    post.title = req.body.title
+    post.description = req.body.description
+    post.save(function (error) {
       if (error) {
         console.log(error)
       }
@@ -83,19 +83,19 @@ app.put('/students/:id', (req, res) => {
   })
 })
 
-// DELETE: Delete a student
-app.delete('/students/:id', (req, res) => {
+// DELETE: Delete a post
+app.delete('/posts/:id', (req, res) => {
   console.log('delete me...')
   var db = req.db;
-  Student.remove({
+  Post.remove({
     _id: req.params.id
-  }, function(err, student){
+  }, function(err, post){
     if (err)
       res.send(err)
-      Student.find({}, 'title description', function (error, students) {
+      Post.find({}, 'title description', function (error, posts) {
       if (error) { console.error(error); }
      	res.send({
-      		students: students
+      		posts: posts
     	})
   	}).sort({_id:-1}) 
   })
