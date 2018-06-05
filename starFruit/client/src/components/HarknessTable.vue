@@ -108,7 +108,7 @@ export default {
       resetButton: false,
       students: [
         {
-          name: 'Aliqyan Tapia',
+          name: 'Help me',
           minutes: 0,
           seconds: 0,
           fullTime: '',
