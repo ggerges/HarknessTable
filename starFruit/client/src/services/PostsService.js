@@ -9,6 +9,10 @@ export default {
     return Api().post('posts', params)
   },
 
+  addStudent (params) {
+    return Api().post('posts', params)
+  },
+
   updatePost (params) {
     return Api().put('posts/' + params.id, params)
   },

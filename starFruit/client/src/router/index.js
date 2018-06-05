@@ -8,7 +8,9 @@ import Login from '@/components/Login'
 import NewAccount from '@/components/NewAccount'
 import HomePage from '@/components/HomePage'
 import Class from '@/components/Class'
+import AddClass from '@/components/AddClass'
 import Student from '@/components/Student'
+import AddStudent from '@/components/AddStudent'
 import HarknessTable from '@/components/HarknessTable'
 import HarknessTableTwo from '@/components/HarknessTableTwo'
 import Review from '@/components/Review'
@@ -58,9 +60,19 @@ export default new Router({
       component: Class
     },
     {
+      path: '/addClass',
+      name: 'AddClass',
+      component: AddClass
+    },
+    {
       path: '/student',
       name: 'Student',
       component: Student
+    },
+    {
+      path: '/addStudent',
+      name: 'AddStudent',
+      component: AddStudent
     },
     {
       path: '/harknessTable',

@@ -6,16 +6,18 @@
       <label>Discussion Topic: </label><input type="text" v-model="topic"><br>
       <label>No. Students: </label><input type="text" v-model="numStudents">
     </div>
+    <!-- <button v-on:click="counter += 1">Add 1</button> -->
+    <p>The button above has been clicked {{ counter }} times.</p>
     <div class="ovalTable">
-      <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400"  :x="400" :y="400">
+      <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400"  :x="350" :y="400">
         <img src="../assets/ovalTable.png">
       </vue-draggable-resizable>
     </div>
 
     <div class="studentSpot">
-      <span v-for="numStudent in numStudents" v-bind:key="numStudent.id">
-        <vue-draggable-resizable :resizable="false" :w="100" :h="100" :x=x :y="100">
-          <p>Student {{numStudent}}</p>
+      <span v-for="student in students" v-bind:key="student.id">
+        <vue-draggable-resizable :resizable="false" :w="100" :h="100" :x="100" :y="100">
+          <p>{{student.name}}</p>
           <!-- <img src="../assets/starfruit.jpg"> -->
         </vue-draggable-resizable>
       </span>
@@ -29,18 +31,32 @@
 
 <script>
 export default {
-  name: 'HarknessTable',
+  name: 'studentComponent',
   data () {
     return {
+      students: [
+        {
+          name: 'Samantha Chim',
+          minutes: 0
+        },
+        {
+          name: 'Lily Laevens',
+          minutes: 2
+        },
+        {
+          name: 'Chris Alexiev',
+          minutes: 10
+        }
+      ],
       topic: 'testing 123',
-      numStudents: 4,
-      counter: 4,
+      numStudents: 3,
+      counter: 0,
       x: this.xPos(this.x, this.numStudents),
       y: 0
     }
   },
   methods: {
-    onResize: function (x, y, width, height) {
+    onResize: function (x, y, width, height) { // for reference only
       this.x = x
       this.y = y
       this.width = width
@@ -65,7 +81,7 @@ export default {
   height: 500px;
   width: 500px;
   border: 1px solid red;
-  position: relative;
+  position: center;
 }
 
 .ovalTable div {
