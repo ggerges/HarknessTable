@@ -8,7 +8,6 @@
     </div>
 
     <section>
-      <h2 class="title is-6">{{title}}</h2>
       <div id="timer">
         <span id="minutes">{{ minutes }}</span>
         <span id="middle">:</span>
@@ -16,29 +15,29 @@
       </div>
 
       <div id="buttons">
-      <!--     Start Timer -->
+        <!--     Start Timer -->
         <button
           id="start"
-          class="button is-light is-large"
+          class="button is-light is-normal"
           v-if="!timer"
           @click="startTimer">
-            <img src="../assets/start.png" width="30" height="30">
+            <img src="../assets/start.png" width="25" height="25">
         </button>
         <!--     Pause Timer -->
         <button
           id="stop"
-          class="button is-light is-large"
+          class="button is-light is-normal"
           v-if="timer"
           @click="stopTimer">
-            <img src="../assets/pause.png" width="30" height="30">
+            <img src="../assets/pause.png" width="25" height="25">
         </button>
         <!--     Restart Timer -->
         <button
           id="reset"
-          class="button is-light is-large"
+          class="button is-light is-normal"
           v-if="resetButton"
           @click="resetTimer">
-            <img src="../assets/restart.png" width="30" height="30">
+            <img src="../assets/restart.png" width="20" height="20">
         </button>
       </div>
     </section>
@@ -54,7 +53,40 @@
     <div class="studentSpot">
       <span v-for="student in students" v-bind:key="student.id">
         <vue-draggable-resizable :resizable="false" :w="120" :h="120" :x="100" :y="100">
+          <br>
           <p>{{student.name}}</p>
+          <section id="timer">
+            <span id="minutes">{{ student.minutes }}</span>
+            <span id="middle">:</span>
+            <span id="seconds">{{ student.seconds }}</span>
+          </section>
+
+          <section id="buttons">
+            <!--     Start Timer -->
+            <button
+              id="start"
+              class="button is-light is-normal"
+              v-if="!timer"
+              @click="startTimer">
+                <img src="../assets/start.png" width="25" height="25">
+            </button>
+            <!--     Pause Timer -->
+            <button
+              id="stop"
+              class="button is-light is-normal"
+              v-if="timer"
+              @click="stopTimer">
+                <img src="../assets/pause.png" width="25" height="25">
+            </button>
+            <!--     Restart Timer -->
+            <button
+              id="reset"
+              class="button is-light is-normal"
+              v-if="resetButton"
+              @click="resetTimer">
+                <img src="../assets/restart.png" width="20" height="20">
+            </button>
+          </section>
           <!-- <p>min: {{student.minutes}}</p>
           <button v-on:click="student.minutes += 1">Start</button>
           <button v-on:click="student.minutes += 1">End</button> -->
@@ -82,17 +114,26 @@ export default {
           name: 'Samantha Chim',
           minutes: 0,
           seconds: 0,
-          time: this.minutes + ' : ' + this.seconds
+          // time: this.minutes + ' : ' + this.seconds,
+          timer: null,
+          totalTime: 0,
+          resetButton: false
         },
         {
           name: 'Lily Laevens',
           minutes: 2,
-          seconds: 0
+          seconds: 0,
+          timer: null,
+          totalTime: 0,
+          resetButton: false
         },
         {
           name: 'Chris Alexiev',
           minutes: 10,
-          seconds: 0
+          seconds: 0,
+          timer: null,
+          totalTime: 0,
+          resetButton: false
         }
       ],
       topic: 'testing 123',
@@ -172,8 +213,7 @@ export default {
   margin-right: auto;
 }
 #timer {
-  font-size: 50px;
+  font-size: 20px;
   line-height: 1;
-  margin-bottom: 40px;
 }
 </style>
