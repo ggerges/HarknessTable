@@ -1,23 +1,25 @@
 <template>
   <div class="students">
-    <h1>REVIEW</h1>
-    <br><br>
+    <h1>Students</h1>
     <div v-if="students.length > 0" class="table-wrap">
+      <div>
+        <router-link v-bind:to="{ name: 'NewStudent' }" class="">Add Student</router-link>
+      </div>
       <table>
-          <tr>
-            <td>Title</td>
-            <td width="550">Description</td>
-            <td width="100" align="center">Action</td>
-          </tr>
-          <tr v-for="student in students" :key="student.id">
-            <td>{{ student.title }}</td>
-            <td>{{ student.description }}</td>
-            <td align="center">
-              <router-link v-bind:to="{ name: 'EditStudent', params: { id: student._id } }">Edit</router-link> |
-              <a href="#" @click="deleteStudent(student._id)">Delete</a>
-            </td>
-          </tr>
-        </table>
+        <tr>
+          <td>Title</td>
+          <td width="550">Description</td>
+          <td width="100" align="center">Action</td>
+        </tr>
+        <tr v-for="student in students" :key="student.id">
+          <td>{{ student.title }}</td>
+          <td>{{ student.description }}</td>
+          <td align="center">
+            <router-link v-bind:to="{ name: 'EditStudent', params: { id: student._id } }">Edit</router-link> |
+            <a href="#" @click="deleteStudent(student._id)">Delete</a>
+          </td>
+        </tr>
+      </table>
     </div>
     <div v-else>
       There are no students... Let's add one now <br /><br />
@@ -29,7 +31,7 @@
 <script>
 import StudentsService from '@/services/StudentsService'
 export default {
-  name: 'review',
+  name: 'students',
   data () {
     return {
       students: []
@@ -52,6 +54,7 @@ export default {
 }
 </script>
 
+<!-- CSS Style is here right now -->
 <style type="text/css">
 .table-wrap {
   width: 60%;

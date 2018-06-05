@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>Class</h1>
     <div class="container is-fullhd">
       <div class="notification">
