@@ -10,6 +10,7 @@ import HomePage from '@/components/HomePage'
 import Class from '@/components/Class'
 import Student from '@/components/Student'
 import HarknessTable from '@/components/HarknessTable'
+import HarknessTableTwo from '@/components/HarknessTableTwo'
 import Review from '@/components/Review'
 
 Vue.use(Router)
@@ -70,6 +71,11 @@ export default new Router({
       path: '/review',
       name: 'Review',
       component: Review
+    },
+    {
+      path: '/harknessTableTwo',
+      name: 'HarknessTableTwo',
+      component: HarknessTableTwo
     }
   ]
 })
