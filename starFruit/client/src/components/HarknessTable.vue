@@ -52,30 +52,30 @@
         <vue-draggable-resizable :resizable="false" :w="120" :h="120" :x="100" :y="100">
           <br>
           <p>{{student.name}}</p>
+          <!--
           <section id="timer">
-            <span id="minutes" v-bind:minutes="student.minutes">{{ student.minutes }}</span>
+            <span id="minutes" >{{ student.minutes }}</span>
             <span id="middle">:</span>
             <span id="seconds">{{ student.seconds }}</span>
           </section>
-
-          <section id="buttons">
-            <!--     Start Timer -->
+          <section id="buttons"> -->
+            <!--     Start Timer
             <button
               id="start"
               class="button is-light is-normal"
               v-if="!timer"
               @click="startTimer">
                 <img src="../assets/start.png" width="25" height="25">
-            </button>
-            <!--     Pause Timer -->
+            </button> -->
+            <!--     Pause Timer
             <button
               id="stop"
               class="button is-light is-normal"
               v-if="timer"
               @click="stopTimer">
                 <img src="../assets/pause.png" width="25" height="25">
-            </button>
-            <!--     Restart Timer -->
+            </button> -->
+            <!--     Restart Timer
             <button
               id="reset"
               class="button is-light is-normal"
@@ -83,7 +83,7 @@
               @click="resetTimer">
                 <img src="../assets/restart.png" width="20" height="20">
             </button>
-          </section>
+          </section> -->
           <!-- <p>min: {{student.minutes}}</p>
           <button v-on:click="student.minutes += 1">Start</button>
           <button v-on:click="student.minutes += 1">End</button> -->
@@ -108,36 +108,17 @@ export default {
       resetButton: false,
       students: [
         {
-          name: 'Help me',
-          minutes: 0,
-          seconds: 0,
-          fullTime: '',
-          timer: null,
-          totalTime: 0,
-          resetButton: false
+          name: 'Help me'
         },
         {
-          name: 'Lily Laevens',
-          minutes: 2,
-          seconds: 0,
-          fullTime: '',
-          timer: null,
-          totalTime: 0,
-          resetButton: false
+          name: 'Lily Laevens'
         },
         {
-          name: 'Chris Alexiev',
-          minutes: 10,
-          seconds: 0,
-          fullTime: '',
-          timer: null,
-          totalTime: 0,
-          resetButton: false
+          name: 'Chris Alexiev'
         }
       ],
       topic: 'testing 123',
       numStudents: 3,
-      counter: 0,
       x: 0,
       // x: this.xPos(this.x, this.numStudents),
       y: 0

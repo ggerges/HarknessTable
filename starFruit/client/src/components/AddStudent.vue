@@ -3,7 +3,7 @@
     <h1>Add Student</h1>
       <div class="form">
         <div>
-          <input type="text" name="title" placeholder="NAME" v-model="title">
+          <input type="text" name="title" placeholder="TITLE" v-model="title">
         </div>
         <div>
           <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
@@ -18,7 +18,7 @@
 <script>
 import PostsService from '@/services/PostsService'
 export default {
-  name: 'AddStudent',
+  name: 'NewPost',
   data () {
     return {
       title: '',
@@ -27,11 +27,11 @@ export default {
   },
   methods: {
     async addPost () {
-      await PostsService.add({
+      await PostsService.addPost({
         title: this.title,
         description: this.description
       })
-      this.$router.push({ name: 'Posts' })
+      this.$router.push({ name: 'Class' })
     }
   }
 }

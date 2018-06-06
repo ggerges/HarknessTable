@@ -9,8 +9,9 @@
             <p  class="menu-list"><router-link v-bind:to="{ name: 'HarknessTable' }" class="">Start New Harkness</router-link></p>
             <p class="menu-label">Students</p>
             <ul class="menu-list">
-              <li><router-link v-bind:to="{ name: 'Student' }" class="">Lily Laevens</router-link></li>
+              <li>Lily Laevens</li>
               <br>
+              <!-- !!!!!!!!!!! -->
               <li><router-link v-bind:to="{ name: 'Student' }" class="">Add Student</router-link></li>
             </ul>
           </aside>
@@ -18,7 +19,7 @@
         <div class ="column is-9">
           <div v-if="posts.length > 0" class="table-wrap">
             <div>
-              <router-link v-bind:to="{ name: 'AddPost' }" class="">Add Student</router-link>
+              <router-link v-bind:to="{ name: 'AddStudent' }" class="">Add Student</router-link>
             </div>
             <table>
               <tr>
@@ -38,7 +39,7 @@
           </div>
           <div v-else>
             There are no students... Let's add one now <br /><br />
-            <router-link v-bind:to="{ name: 'AddPost' }" class="add_post_link">Add Student</router-link>
+            <router-link v-bind:to="{ name: 'AddStudent' }" class="add_post_link">Add Student</router-link>
           </div>
         </div>
       </div>
