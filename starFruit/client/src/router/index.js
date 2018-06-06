@@ -4,15 +4,18 @@ import HelloWorld from '@/components/HelloWorld'
 import Posts from '@/components/Posts'
 import NewPost from '@/components/NewPost'
 import EditPost from '@/components/EditPost'
-import Login from '@/components/Login'
-import NewAccount from '@/components/NewAccount'
 import HomePage from '@/components/HomePage'
 import Class from '@/components/Class'
 import AddClass from '@/components/AddClass'
 import AddStudent from '@/components/AddStudent'
+import EditStudent from '@/components/EditStudent'
+import NewHarknessTable from '@/components/NewHarknessTable'
 import HarknessTable from '@/components/HarknessTable'
 import HarknessTableTwo from '@/components/HarknessTableTwo'
+// not necessary pages
 import Review from '@/components/Review'
+import Login from '@/components/Login'
+import NewAccount from '@/components/NewAccount'
 
 Vue.use(Router)
 
@@ -67,6 +70,16 @@ export default new Router({
       path: '/addStudent',
       name: 'AddStudent',
       component: AddStudent
+    },
+    {
+      path: '/editStudent',
+      name: 'EditStudent',
+      component: EditStudent
+    },
+    {
+      path: '/newHarknessTable',
+      name: 'NewHarknessTable',
+      component: NewHarknessTable
     },
     {
       path: '/harknessTable',

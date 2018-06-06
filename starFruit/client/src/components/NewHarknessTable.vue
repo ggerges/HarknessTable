@@ -1,18 +1,15 @@
 <template>
   <div class="posts">
-    <h1>Add Student</h1>
+    <h1>New Harkness Table</h1>
       <div class="form">
         <div>
-          <input type="text" name="title" placeholder="STUDENT NAME" v-model="title">
+          <input type="text" name="title" placeholder="TITLE" v-model="title">
         </div>
         <div>
           <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
         </div>
         <div>
-          <input type="text" name="classRoom" placeholder="CLASSROOM" v-model="classRoom">
-        </div>
-        <div>
-          <button class="app_post_btn" @click="addPost">Add</button>
+          <button class="app_post_btn" @click="updatePost">Update</button>
         </div>
       </div>
   </div>
@@ -21,22 +18,31 @@
 <script>
 import PostsService from '@/services/PostsService'
 export default {
-  name: 'NewPost',
+  name: 'EditPost',
   data () {
     return {
       title: '',
-      description: '',
-      classRoom: ''
+      description: ''
     }
   },
+  mounted () {
+    this.getPost()
+  },
   methods: {
-    async addPost () {
-      await PostsService.addPost({
-        title: this.title,
-        description: this.description,
-        classRoom: this.classRoom
+    async getPost () {
+      const response = await PostsService.getPost({
+        id: this.$route.params.id
       })
-      this.$router.push({ name: 'Class' })
+      this.title = response.data.title
+      this.description = response.data.description
+    },
+    async updatePost () {
+      await PostsService.updatePost({
+        id: this.$route.params.id,
+        title: this.title,
+        description: this.description
+      })
+      this.$router.push({ name: 'Posts' })
     }
   }
 }

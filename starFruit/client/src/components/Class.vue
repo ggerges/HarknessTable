@@ -6,32 +6,34 @@
       <div class="columns">
         <div class="column is-3">
           <aside class="menu">
-            <p  class="menu-list"><router-link v-bind:to="{ name: 'HarknessTable' }" class="">Start New Harkness</router-link></p>
+            <p  class="menu-list"><router-link v-bind:to="{ name: 'NewHarknessTable' }" class="">Start New Harkness</router-link></p>
             <p class="menu-label">Students</p>
+            <ul class="menu-list" v-for="post in posts" :key="post.id">
+              <li><router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">{{post.title}}</router-link></li>
+            </ul>
             <ul class="menu-list">
-              <li>Lily Laevens</li>
-              <br>
-              <!-- !!!!!!!!!!! -->
-              <li><router-link v-bind:to="{ name: 'Student' }" class="">Add Student</router-link></li>
+              <li><router-link v-bind:to="{ name: 'AddStudent' }" class="">+ Add Student</router-link></li>
             </ul>
           </aside>
         </div>
         <div class ="column is-9">
           <div v-if="posts.length > 0" class="table-wrap">
             <div>
-              <router-link v-bind:to="{ name: 'AddStudent' }" class="">Add Student</router-link>
+              <router-link v-bind:to="{ name: 'AddStudent' }" class="">+ Add Student</router-link>
             </div>
             <table>
               <tr>
                 <td>Student Name</td>
                 <td width="550">Description</td>
+                <td>ClassRoom</td>
                 <td width="100" align="center">Action</td>
               </tr>
               <tr v-for="post in posts" :key="post.id">
                 <td>{{ post.title }}</td>
                 <td>{{ post.description }}</td>
+                <td>{{ post.classRoom }}</td>
                 <td align="center">
-                  <router-link v-bind:to="{ name: 'EditPost', params: { id: post._id } }">Edit</router-link> |
+                  <router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">Edit</router-link> |
                   <a href="#" @click="deletePost(post._id)">Delete</a>
                 </td>
               </tr>
@@ -77,7 +79,7 @@ export default {
     async deletePost (id) {
       const response = await PostsService.deletePost(id)
       this.posts = response.data.posts
-      this.$router.push({name: 'Posts'})
+      this.$router.push({name: 'Class'})
     }
   }
 }

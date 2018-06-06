@@ -29,9 +29,11 @@ app.post('/posts', (req, res) => {
   var db = req.db;
   var title = req.body.title;
   var description = req.body.description;
+  var classRoom = req.body.classRoom;
   var new_post = new Post({
     title: title,
-    description: description
+    description: description,
+    classRoom: classRoom
   })
 
   new_post.save(function (error) {
@@ -40,14 +42,14 @@ app.post('/posts', (req, res) => {
     }
     res.send({
       success: true,
-      message: 'Post saved successfully!'
+      message: 'Student saved successfully!'
     })
   })
 })
 
 // READ: Fetch all posts in descending order
 app.get('/posts', (req, res) => {
-  Post.find({}, 'title description', function (error, posts) {
+  Post.find({}, 'title description classRoom', function (error, posts) {
     if (error) { console.error(error); }
     res.send({
       posts: posts
@@ -58,7 +60,7 @@ app.get('/posts', (req, res) => {
 // UPDATE: Fetch single post
 app.get('/post/:id', (req, res) => {
   var db = req.db;
-  Post.findById(req.params.id, 'title description', function (error, post) {
+  Post.findById(req.params.id, 'title description classRoom', function (error, post) {
     if (error) { console.error(error); }
     res.send(post)
   })
@@ -67,11 +69,12 @@ app.get('/post/:id', (req, res) => {
 // Update a post
 app.put('/posts/:id', (req, res) => {
   var db = req.db;
-  Post.findById(req.params.id, 'title description', function (error, post) {
+  Post.findById(req.params.id, 'title description classRoom', function (error, post) {
     if (error) { console.error(error); }
 
     post.title = req.body.title
     post.description = req.body.description
+    post.classRoom = req.body.classRoom
     post.save(function (error) {
       if (error) {
         console.log(error)
@@ -92,7 +95,7 @@ app.delete('/posts/:id', (req, res) => {
   }, function(err, post){
     if (err)
       res.send(err)
-      Post.find({}, 'title description', function (error, posts) {
+      Post.find({}, 'title description classRoom', function (error, posts) {
       if (error) { console.error(error); }
      	res.send({
       		posts: posts
