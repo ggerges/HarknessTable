@@ -6,13 +6,19 @@
           <input type="text" name="title" placeholder="STUDENT NAME" v-model="title">
         </div>
         <div>
-          <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
+          <textarea rows="15" cols="15" placeholder="DESCRIPTION NOTES" v-model="description"></textarea>
+        </div>
+       <div>
+          <input type="text" name="knowledgePoint" placeholder="KNOWLEDGE & UNDERSTANDING POINTS" v-model="knowledgePoint">
         </div>
         <div>
-          <input type="text" name="classRoom" placeholder="CLASSROOM" v-model="classRoom">
-        </div
+          <input type="text" name="thinkingPoint" placeholder="THINKING & INQUIRY POINTS" v-model="thinkingPoint">
+        </div>
         <div>
-          <button class="app_post_btn" @click="updatePost">Update</button>
+          <input type="text" name="communicationPoint" placeholder="COMMUNICATION POINTS" v-model="communicationPoint">
+        </div>
+        <div>
+          <input type="text" name="applicationPoint" placeholder="APPLICATION POINTS" v-model="applicationPoint">
         </div>
       </div>
   </div>
@@ -25,7 +31,11 @@ export default {
   data () {
     return {
       title: '',
-      description: ''
+      description: '',
+      knowledgePoint: '',
+      thinkingPoint: '',
+      communicationPoint: '',
+      applicationPoint: ''
     }
   },
   mounted () {
@@ -38,14 +48,20 @@ export default {
       })
       this.title = response.data.title
       this.description = response.data.description
-      this.classRoom = response.data.classRoom
+      this.knowledgePoint = response.data.knowledgePoint
+      this.thinkingPoint = response.data.thinkingPoint
+      this.communicationPoint = response.data.communicationPoint
+      this.applicationPoint = response.data.applicationPoint
     },
     async updatePost () {
       await PostsService.updatePost({
         id: this.$route.params.id,
         title: this.title,
         description: this.description,
-        classRoom: this.classRoom
+        knowledgePoint: this.knowledgePoint,
+        thinkingPoint: this.thinkingPoint,
+        communicationPoint: this.communicationPoint,
+        applicationPoint: this.applicationPoint
       })
       this.$router.push({ name: 'Class' })
     }
