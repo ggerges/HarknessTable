@@ -22,7 +22,7 @@ db.once("open", function(callback){
 
 
 // Post model 
-var Post = require("../models/post");
+var Post = require("../models/student");
 
 // CREATE: Add new post
 app.post('/posts', (req, res) => {
