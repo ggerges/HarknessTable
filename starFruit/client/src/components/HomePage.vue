@@ -97,8 +97,8 @@ export default {
   font-size: 20px;
   text-align: center;
 }
-.hero-body div {
-  text-align: left;
+h1 {
+  text-align: center;
 }
 ul {
   list-style-type: none;

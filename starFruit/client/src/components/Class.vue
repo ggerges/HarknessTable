@@ -6,13 +6,13 @@
       <div class="columns">
         <div class="column is-3">
           <aside class="menu">
-            <p  class="menu-list"><router-link v-bind:to="{ name: 'NewHarknessTable' }" class="">Start New Harkness</router-link></p>
+            <p  class="menu-list"><router-link v-bind:to="{ name: 'NewHarknessTable' }">Start New Harkness</router-link></p>
             <p class="menu-label">Students</p>
             <ul class="menu-list" v-for="post in posts" :key="post.id">
-              <li><router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">{{post.title}}</router-link></li>
+              <li><router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">{{post.name}}</router-link></li>
             </ul>
             <ul class="menu-list">
-              <li><router-link v-bind:to="{ name: 'AddStudent' }" class="">+ Add Student</router-link></li>
+              <li><router-link v-bind:to="{ name: 'AddStudent' }">+ Add Student</router-link></li>
             </ul>
           </aside>
         </div>
@@ -24,14 +24,20 @@
             <table>
               <tr>
                 <td>Student Name</td>
-                <td width="550">Description</td>
-                <td>ClassRoom</td>
-                <td width="100" align="center">Action</td>
+                <td width="300">Description Notes</td>
+                <td>K</td>
+                <td>T</td>
+                <td>C</td>
+                <td>A</td>
+                <td align="center">Action</td>
               </tr>
               <tr v-for="post in posts" :key="post.id">
-                <td>{{ post.title }}</td>
+                <td>{{ post.name }}</td>
                 <td>{{ post.description }}</td>
-                <td>{{ post.classRoom }}</td>
+                <td>{{ post.knowledgePoint }}</td>
+                <td>{{ post.thinkingPoint }}</td>
+                <td>{{ post.communicationPoint }}</td>
+                <td>{{ post.applicationPoint }}</td>
                 <td align="center">
                   <router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">Edit</router-link> |
                   <a href="#" @click="deletePost(post._id)">Delete</a>
@@ -95,7 +101,7 @@ h1 {
 .hero-body div {
   text-align: left;
 }
-.table-wrap {
+table {
   margin: 0 auto;
   text-align: center;
 }

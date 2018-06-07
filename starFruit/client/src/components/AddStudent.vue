@@ -3,13 +3,22 @@
     <h1>Add Student</h1>
       <div class="form">
         <div>
-          <input type="text" name="title" placeholder="STUDENT NAME" v-model="title">
+          <input type="text" name="name" placeholder="STUDENT NAME" v-model="name">
+        </div>
+       <div>
+           <textarea rows="5" cols="15" placeholder="DESCRIPTION NOTES" v-model="description"></textarea>
+        </div>
+       <div>
+          <input type="text" name="knowledgePoint" placeholder="KNOWLEDGE & UNDERSTANDING POINTS" v-model="knowledgePoint">
         </div>
         <div>
-          <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
+          <input type="text" name="thinkingPoint" placeholder="THINKING & INQUIRY POINTS" v-model="thinkingPoint">
         </div>
         <div>
-          <input type="text" name="classRoom" placeholder="CLASSROOM" v-model="classRoom">
+          <input type="text" name="communicationPoint" placeholder="COMMUNICATION POINTS" v-model="communicationPoint">
+        </div>
+        <div>
+          <input type="text" name="applicationPoint" placeholder="APPLICATION POINTS" v-model="applicationPoint">
         </div>
         <div>
           <button class="app_post_btn" @click="addPost">Add</button>
@@ -24,17 +33,24 @@ export default {
   name: 'NewPost',
   data () {
     return {
-      title: '',
+      name: '',
       description: '',
-      classRoom: ''
+      knowledgePoint: '',
+      thinkingPoint: '',
+      communicationPoint: '',
+      applicationPoint: ''
     }
   },
   methods: {
     async addPost () {
       await PostsService.addPost({
-        title: this.title,
+        name: this.name,
         description: this.description,
-        classRoom: this.classRoom
+        classRoom: this.classRoom,
+        knowledgePoint: this.knowledgePoint,
+        thinkingPoint: this.thinkingPoint,
+        communicationPoint: this.communicationPoint,
+        applicationPoint: this.applicationPoint
       })
       this.$router.push({ name: 'Class' })
     }
