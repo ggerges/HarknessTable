@@ -1,15 +1,14 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var PostSchema = new Schema({
-  title: String,
+var StudentSchema = new Schema({
+  name: String,
   description: String,
   knowledgePoint: String,
   thinkingPoint: String,
   communicationPoint: String,
-  applicationPoint: String,
-  discussions: Array
+  applicationPoint: String
 });
 
-var Post = mongoose.model("Post", PostSchema);
-module.exports = Post;
+var Student = mongoose.model("Student", StudentSchema);
+module.exports = Student;
