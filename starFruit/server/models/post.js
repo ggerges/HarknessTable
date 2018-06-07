@@ -9,10 +9,10 @@ var PostSchema = new Schema({
   // discussionTopic: String,
   name: String,
   description: String, // dicussion notes concerning student
-  knowledgePoint: String,
-  thinkingPoint: String,
-  communicationPoint: String,
-  applicationPoint: String
+  knowledgePoint: Number,
+  thinkingPoint: Number,
+  communicationPoint: Number,
+  applicationPoint: Number
 });
 
 var Post = mongoose.model("Post", PostSchema);

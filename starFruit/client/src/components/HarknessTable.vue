@@ -17,6 +17,7 @@
           </aside>
         </div>
         <div class ="column is-9">
+          <!-- Put in an explanation paragraph -->
           <!-- oval table -->
           <div class="ovalTable">
               <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400"  :x="360" :y="100">
@@ -29,6 +30,9 @@
               <vue-draggable-resizable :resizable="false" :w="120" :h="120" :x="300" :y="50">
                 <br>
                 <p>{{post.name}}</p>
+                <button v-on:click="post.knowledgePoint += 1" v-model="knowledgePoint">+ K</button>
+                <span>{{post.knowledgePoint}}</span>
+                <button v-on:click="post.knowledgePoint -= 1" v-model="knowledgePoint">- K</button>
               </vue-draggable-resizable>
             </span>
           </div>
@@ -44,7 +48,12 @@ export default {
   name: 'HarknessTable',
   data () {
     return {
-      posts: []
+      name: '',
+      description: '',
+      knowledgePoint: '',
+      thinkingPoint: '',
+      communicationPoint: '',
+      applicationPoint: ''
     }
   },
   mounted () {
@@ -59,6 +68,18 @@ export default {
       const response = await PostsService.deletePost(id)
       this.posts = response.data.posts
       this.$router.push({name: 'HarknessTable'})
+    },
+    async addPost () {
+      await PostsService.addPost({
+        name: this.name,
+        description: this.description,
+        classRoom: this.classRoom,
+        knowledgePoint: this.knowledgePoint,
+        thinkingPoint: this.thinkingPoint,
+        communicationPoint: this.communicationPoint,
+        applicationPoint: this.applicationPoint
+      })
+      this.$router.push({ name: 'HarknessTable' })
     }
   }
 }

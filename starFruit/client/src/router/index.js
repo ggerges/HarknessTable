@@ -89,7 +89,7 @@ export default new Router({
       name: 'HarknessTable',
       component: HarknessTable
     },
-     {
+    {
       path: '/harknessTable/addStudent',
       name: 'HarknessAddStudent',
       component: HarknessAddStudent

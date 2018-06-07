@@ -116,6 +116,7 @@
 </template>
 
 <script>
+import PostsService from '@/services/PostsService'
 export default {
   name: 'HarknessTable',
   data () {
@@ -124,6 +125,7 @@ export default {
       totalTime: 0,
       resetButton: false,
       posts: [],
+
       /* students: [
         {
           name: 'Help me'
