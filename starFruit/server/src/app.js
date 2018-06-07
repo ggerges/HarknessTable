@@ -22,10 +22,10 @@ db.once("open", function(callback){
 
 
 // Post model 
-var Student = require("../models/student");
+var Post = require("../models/student");
 
 // CREATE: Add new post
-app.student('/students', (req, res) => {
+app.post('/posts', (req, res) => {
   var db = req.db;
   var name = req.body.name;
   var description = req.body.description;
@@ -33,7 +33,7 @@ app.student('/students', (req, res) => {
   var thinkingPoint = req.body.thinkingPoint;
   var communicationPoint = req.body.communicationPoint;
   var applicationPoint = req.body.applicationPoint;
-  var new_student = new Student({
+  var new_post = new Post({
     name: name,
     description: description,
     knowledgePoint: knowledgePoint,
@@ -42,7 +42,7 @@ app.student('/students', (req, res) => {
     applicationPoint: applicationPoint
   })
 
-  new_student.save(function (error) {
+  new_post.save(function (error) {
     if (error) {
       console.log(error)
     }
@@ -54,37 +54,37 @@ app.student('/students', (req, res) => {
 })
 
 // READ: Fetch all posts in descending order
-app.get('/students', (req, res) => {
-  Student.find({}, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, students) {
+app.get('/posts', (req, res) => {
+  Post.find({}, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, posts) {
     if (error) { console.error(error); }
     res.send({
-      students: students
+      posts: posts
     })
   }).sort({_id:-1})
 })
 
 // UPDATE: Fetch single post
-app.get('/student/:id', (req, res) => {
+app.get('/post/:id', (req, res) => {
   var db = req.db;
-  Student.findById(req.params.id, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, student) {
+  Post.findById(req.params.id, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, post) {
     if (error) { console.error(error); }
-    res.send(student)
+    res.send(post)
   })
 })
 
 // Update a post
-app.put('/students/:id', (req, res) => {
+app.put('/posts/:id', (req, res) => {
   var db = req.db;
-  Student.findById(req.params.id, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, student) {
+  Post.findById(req.params.id, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, post) {
     if (error) { console.error(error); }
 
-    student.name = req.body.name
-    student.description = req.body.description
-    student.knowledgePoint = req.body.knowledgePoint
-    student.thinkingPoint = req.body.thinkingPoint
-    student.communicationPoint = req.body.communicationPoint
-    student.applicationPoint = req.body.applicationPoint
-    student.save(function (error) {
+    post.name = req.body.name
+    post.description = req.body.description
+    post.knowledgePoint = req.body.knowledgePoint
+    post.thinkingPoint = req.body.thinkingPoint
+    post.communicationPoint = req.body.communicationPoint
+    post.applicationPoint = req.body.applicationPoint
+    post.save(function (error) {
       if (error) {
         console.log(error)
       }
@@ -96,18 +96,18 @@ app.put('/students/:id', (req, res) => {
 })
 
 // DELETE: Delete a post
-app.delete('/students/:id', (req, res) => {
+app.delete('/posts/:id', (req, res) => {
   console.log('delete me...')
   var db = req.db;
-  Student.remove({
+  Post.remove({
     _id: req.params.id
-  }, function(err, student){
+  }, function(err, post){
     if (err)
       res.send(err)
-      Student.find({}, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, students) {
+      Post.find({}, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, posts) {
       if (error) { console.error(error); }
      	res.send({
-      		students: students
+      		posts: posts
     	})
   	}).sort({_id:-1}) 
   })
