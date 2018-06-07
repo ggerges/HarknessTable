@@ -7,8 +7,7 @@ var PostSchema = new Schema({
   knowledgePoint: String,
   thinkingPoint: String,
   communicationPoint: String,
-  applicationPoint: String,
-  discussions: Array
+  applicationPoint: String
 });
 
 var Post = mongoose.model("Post", PostSchema);
