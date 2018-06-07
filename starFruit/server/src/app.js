@@ -29,17 +29,11 @@ app.post('/posts', (req, res) => {
   var db = req.db;
   var title = req.body.title;
   var description = req.body.description;
-  var knowledgePoint = req.body.knowledgePoint;
-  var thinkingPoint = req.body.thinkingPoint;
-  var communicationPoint = req.body.communicationPoint;
-  var applicationPoint = req.body.applicationPoint;
+  var classRoom = req.body.classRoom;
   var new_post = new Post({
     title: title,
     description: description,
-    knowledgePoint: knowledgePoint,
-    thinkingPoint: thinkingPoint,
-    communicationPoint: communicationPoint,
-    applicationPoint: applicationPoint
+    classRoom: classRoom
   })
 
   new_post.save(function (error) {
@@ -55,7 +49,7 @@ app.post('/posts', (req, res) => {
 
 // READ: Fetch all posts in descending order
 app.get('/posts', (req, res) => {
-  Post.find({}, 'title description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, posts) {
+  Post.find({}, 'title description classRoom', function (error, posts) {
     if (error) { console.error(error); }
     res.send({
       posts: posts
@@ -66,7 +60,7 @@ app.get('/posts', (req, res) => {
 // UPDATE: Fetch single post
 app.get('/post/:id', (req, res) => {
   var db = req.db;
-  Post.findById(req.params.id, 'title description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, post) {
+  Post.findById(req.params.id, 'title description classRoom', function (error, post) {
     if (error) { console.error(error); }
     res.send(post)
   })
@@ -75,15 +69,12 @@ app.get('/post/:id', (req, res) => {
 // Update a post
 app.put('/posts/:id', (req, res) => {
   var db = req.db;
-  Post.findById(req.params.id, 'title description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, post) {
+  Post.findById(req.params.id, 'title description classRoom', function (error, post) {
     if (error) { console.error(error); }
 
     post.title = req.body.title
     post.description = req.body.description
-    post.knowledgePoint = req.body.knowledgePoint
-    post.thinkingPoint = req.body.thinkingPoint
-    post.communicationPoint = req.body.communicationPoint
-    post.applicationPoint = req.body.applicationPoint
+    post.classRoom = req.body.classRoom
     post.save(function (error) {
       if (error) {
         console.log(error)
@@ -104,7 +95,7 @@ app.delete('/posts/:id', (req, res) => {
   }, function(err, post){
     if (err)
       res.send(err)
-      Post.find({}, 'title description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, posts) {
+      Post.find({}, 'title description classRoom', function (error, posts) {
       if (error) { console.error(error); }
      	res.send({
       		posts: posts

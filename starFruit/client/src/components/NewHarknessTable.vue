@@ -3,22 +3,10 @@
     <h1>New Harkness Table</h1>
       <div class="form">
         <div>
-          <input type="text" name="title" placeholder="STUDENT NAME" v-model="title">
+          <input type="text" name="title" placeholder="TITLE" v-model="title">
         </div>
         <div>
-          <textarea rows="15" cols="15" placeholder="DESCRIPTION NOTES" v-model="description"></textarea>
-        </div>
-        <div>
-          <input type="text" name="knowledgePoint" placeholder="KNOWLEDGE & UNDERSTANDING POINTS" v-model="knowledgePoint">
-        </div>
-        <div>
-          <input type="text" name="thinkingPoint" placeholder="THINKING & INQUIRY POINTS" v-model="thinkingPoint">
-        </div>
-        <div>
-          <input type="text" name="communicationPoint" placeholder="COMMUNICATION POINTS" v-model="communicationPoint">
-        </div>
-        <div>
-          <input type="text" name="applicationPoint" placeholder="APPLICATION POINTS" v-model="applicationPoint">
+          <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
         </div>
         <div>
           <button class="app_post_btn" @click="updatePost">Update</button>

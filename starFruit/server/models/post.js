@@ -4,10 +4,7 @@ var Schema = mongoose.Schema;
 var PostSchema = new Schema({
   title: String,
   description: String,
-  knowledgePoint: String,
-  thinkingPoint: String,
-  communicationPoint: String,
-  applicationPoint: String
+  classRoom: String
 });
 
 var Post = mongoose.model("Post", PostSchema);

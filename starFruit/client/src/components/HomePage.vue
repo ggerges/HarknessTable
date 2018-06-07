@@ -93,12 +93,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  text-align: center;
-}
 .info-tiles div {
   font-size: 20px;
   text-align: center;
+}
+.hero-body div {
+  text-align: left;
 }
 ul {
   list-style-type: none;

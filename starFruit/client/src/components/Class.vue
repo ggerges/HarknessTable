@@ -12,32 +12,26 @@
               <li><router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">{{post.title}}</router-link></li>
             </ul>
             <ul class="menu-list">
-              <li><router-link v-bind:to="{ name: 'AddStudent' }">+ Add Student</router-link></li>
+              <li><router-link v-bind:to="{ name: 'AddStudent' }" class="">+ Add Student</router-link></li>
             </ul>
           </aside>
         </div>
         <div class ="column is-9">
           <div v-if="posts.length > 0" class="table-wrap">
             <div>
-              <router-link v-bind:to="{ name: 'AddStudent' }">+ Add Student</router-link>
+              <router-link v-bind:to="{ name: 'AddStudent' }" class="">+ Add Student</router-link>
             </div>
             <table>
               <tr>
                 <td>Student Name</td>
-                <td width="300">Description Notes</td>
-                <td>K</td>
-                <td>T</td>
-                <td>C</td>
-                <td>A</td>
-                <td align="center">Action</td>
+                <td width="550">Description</td>
+                <td>ClassRoom</td>
+                <td width="100" align="center">Action</td>
               </tr>
               <tr v-for="post in posts" :key="post.id">
                 <td>{{ post.title }}</td>
                 <td>{{ post.description }}</td>
-                <td>{{ post.knowledgePoint }}</td>
-                <td>{{ post.thinkingPoint }}</td>
-                <td>{{ post.communicationPoint }}</td>
-                <td>{{ post.applicationPoint }}</td>
+                <td>{{ post.classRoom }}</td>
                 <td align="center">
                   <router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">Edit</router-link> |
                   <a href="#" @click="deletePost(post._id)">Delete</a>
@@ -53,6 +47,15 @@
       </div>
     </div>
     <br><br>
+    <!-- <section>
+        <b-field position="is-centered">
+            <b-input placeholder="Search..." type="search" icon="magnify">
+            </b-input>
+            <p class="control">
+                <button class="button is-info">Search</button>
+            </p>
+        </b-field>
+    </section> -->
   </div>
 </template>
 
@@ -92,7 +95,7 @@ h1 {
 .hero-body div {
   text-align: left;
 }
-table {
+.table-wrap {
   margin: 0 auto;
   text-align: center;
 }
