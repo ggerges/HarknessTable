@@ -47,10 +47,10 @@
         <div class="column is-9">
           <section class="hero is-info welcome is-small">
             <div class="hero-body">
-              <div class="container">
+              <div class="intro">
                 <h1 class="title">Hello.</h1>
                 <h2 class="subtitle">I hope you are having a great day!</h2>
-                <p>Click on the menu sidebar on the left or the tiles below to choose a class.</p>
+                <p class="subtitle">Click on the menu sidebar on the left or the tiles below to choose a class.</p>
               </div>
             </div>
           </section>
@@ -99,6 +99,9 @@ export default {
 }
 h1 {
   text-align: center;
+}
+.title, .subtitle {
+  text-align: left;
 }
 ul {
   list-style-type: none;

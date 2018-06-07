@@ -9,8 +9,9 @@ import Class from '@/components/Class'
 import AddClass from '@/components/AddClass'
 import AddStudent from '@/components/AddStudent'
 import EditStudent from '@/components/EditStudent'
-import NewHarknessTable from '@/components/NewHarknessTable'
+import NewDiscussion from '@/components/NewDiscussion'
 import HarknessTable from '@/components/HarknessTable'
+import HarknessTableOld from '@/components/HarknessTableOld'
 import HarknessTableTwo from '@/components/HarknessTableTwo'
 // not necessary pages
 import Review from '@/components/Review'
@@ -77,14 +78,19 @@ export default new Router({
       component: EditStudent
     },
     {
-      path: '/newHarknessTable',
-      name: 'NewHarknessTable',
-      component: NewHarknessTable
+      path: '/newDiscussion',
+      name: 'NewDiscussion',
+      component: NewDiscussion
     },
     {
       path: '/harknessTable',
       name: 'HarknessTable',
       component: HarknessTable
+    },
+    {
+      path: '/harknessTableOld',
+      name: 'HarknessTableOld',
+      component: HarknessTableOld
     },
     {
       path: '/review',

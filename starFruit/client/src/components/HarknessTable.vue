@@ -1,204 +1,120 @@
 <template>
   <div>
-    <h1>Harkness Table</h1>
-    <br>
-    <div class="overview">
-      <label>Discussion Topic: </label><input type="text" v-model="topic"><br>
-      <label>No. Students: </label><input type="text" v-model="numStudents">
-    </div>
-    <button @click="testing(students)">here</button>
-    <section>
-      <div id="timer">
-        <span id="minutes">{{ minutes }}</span>
-        <span id="middle">:</span>
-        <span id="seconds">{{ seconds }}</span>
-      </div>
-
-      <div id="buttons">
-        <!--     Start Timer -->
-        <button
-          id="start"
-          class="button is-light is-normal"
-          v-if="!timer"
-          @click="startTimer">
-            <img src="../assets/start.png" width="25" height="25">
-        </button>
-        <!--     Pause Timer -->
-        <button
-          id="stop"
-          class="button is-light is-normal"
-          v-if="timer"
-          @click="stopTimer">
-            <img src="../assets/pause.png" width="25" height="25">
-        </button>
-        <!--     Restart Timer -->
-        <button
-          id="reset"
-          class="button is-light is-normal"
-          v-if="resetButton"
-          @click="resetTimer">
-            <img src="../assets/restart.png" width="20" height="20">
-        </button>
-      </div>
-    </section>
-    <div class="ovalTable">
-      <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400"  :x="350" :y="400">
-        <img src="../assets/ovalTable.png">
-      </vue-draggable-resizable>
-    </div>
-
-    <div class="studentSpot">
-      <span v-for="student in students" v-bind:key="student.id">
-        <vue-draggable-resizable :resizable="false" :w="120" :h="120" :x="100" :y="100">
-          <br>
-          <p>{{student.name}}</p>
-          <!--
-          <section id="timer">
-            <span id="minutes" >{{ student.minutes }}</span>
-            <span id="middle">:</span>
-            <span id="seconds">{{ student.seconds }}</span>
-          </section>
-          <section id="buttons"> -->
-            <!--     Start Timer
-            <button
-              id="start"
-              class="button is-light is-normal"
-              v-if="!timer"
-              @click="startTimer">
-                <img src="../assets/start.png" width="25" height="25">
-            </button> -->
-            <!--     Pause Timer
-            <button
-              id="stop"
-              class="button is-light is-normal"
-              v-if="timer"
-              @click="stopTimer">
-                <img src="../assets/pause.png" width="25" height="25">
-            </button> -->
-            <!--     Restart Timer
-            <button
-              id="reset"
-              class="button is-light is-normal"
-              v-if="resetButton"
-              @click="resetTimer">
-                <img src="../assets/restart.png" width="20" height="20">
-            </button>
-          </section> -->
-          <!-- <p>min: {{student.minutes}}</p>
-          <button v-on:click="student.minutes += 1">Start</button>
-          <button v-on:click="student.minutes += 1">End</button> -->
-          <!-- <img src="../assets/starfruit.jpg"> -->
-        </vue-draggable-resizable>
-      </span>
-    </div>
-    <!-- <div>
-      <span v-for="n in numStudents" v-bind:key="n.id">{{ n }} </span>
-    </div> -->
+    <h1>Harkness Table Discussion</h1>
     <br><br>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-3">
+          <aside class="menu">
+            <p  class="menu-list"><router-link v-bind:to="{ name: 'Class' }">Return to Class</router-link></p>
+            <p class="menu-label">Students</p>
+            <ul class="menu-list" v-for="post in posts" :key="post.id">
+              <li><router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">{{post.name}}</router-link></li>
+            </ul>
+            <ul class="menu-list">
+              <li><router-link v-bind:to="{ name: 'AddStudent' }" class="">+ Add Student</router-link></li>
+            </ul>
+          </aside>
+        </div>
+        <div class ="column is-9">
+          <!-- oval table -->
+          <div class="ovalTable">
+              <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400"  :x="360" :y="100">
+                <img src="../assets/ovalTable.png">
+              </vue-draggable-resizable>
+          </div>
+          <!-- student spots -->
+          <div class="studentSpot">
+            <span v-for="post in posts" v-bind:key="post.id">
+              <vue-draggable-resizable :resizable="false" :w="120" :h="120" :x="300" :y="50">
+                <br>
+                <p>{{post.name}}</p>
+              </vue-draggable-resizable>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import PostsService from '@/services/PostsService'
 export default {
-  name: 'studentComponent',
+  name: 'HarknessTable',
   data () {
     return {
-      timer: null,
-      totalTime: 0,
-      resetButton: false,
-      students: [
-        {
-          name: 'Help me'
-        },
-        {
-          name: 'Lily Laevens'
-        },
-        {
-          name: 'Chris Alexiev'
-        }
-      ],
-      topic: 'testing 123',
-      numStudents: 3,
-      x: 0,
-      // x: this.xPos(this.x, this.numStudents),
-      y: 0
+      posts: []
     }
+  },
+  mounted () {
+    this.getPosts()
   },
   methods: {
-    testing: function (students) {
-      for (var i = 0; i < this.students.length; i++) {
-        console.log(this.students[i].name)
-      }
+    async getPosts () {
+      const response = await PostsService.fetchPosts()
+      this.posts = response.data.posts
     },
-    startTimer: function () {
-      this.timer = setInterval(() => this.countdown(), 1000)
-      this.resetButton = true
-    },
-    stopTimer: function () {
-      clearInterval(this.timer)
-      this.timer = null
-      this.resetButton = true
-    },
-    resetTimer: function () {
-      this.totalTime = 0
-      clearInterval(this.timer)
-      this.timer = null
-      this.resetButton = false
-    },
-    padTime: function (time) {
-      return (time < 10 ? '0' : '') + time
-    },
-    countdown: function () {
-      this.totalTime++
-    }
-  },
-  computed: {
-    minutes: function () {
-      const minutes = Math.floor(this.totalTime / 60)
-      return this.padTime(minutes)
-    },
-    seconds: function () {
-      const seconds = this.totalTime - (this.minutes * 60)
-      return this.padTime(seconds)
+    async deletePost (id) {
+      const response = await PostsService.deletePost(id)
+      this.posts = response.data.posts
+      this.$router.push({name: 'HarknessTable'})
     }
   }
-  /* ,
-  methods: {
-    onResize: function (x, y, width, height) { // for reference only
-      this.x = x
-      this.y = y
-      this.width = width
-      this.height = height
-    },
-    xPos: function (x, numStudents) { // this doesn't work....
-      var i
-      this.x = 100
-      for (i = 0; i < numStudents; i++) {
-        this.x += 10
-      }
-    }
-  } */
 }
+
 </script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style type="text/css">
-.overview label {
-  color: #47DAE7;
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+.hero-body div {
+  text-align: left;
+}
+table {
+  margin: 0 auto;
+  text-align: center;
+}
+table th, table tr {
+  text-align: left;
+}
+table thead {
+  background: #f2f2f2;
+}
+table tr td {
+  padding: 10px;
+}
+table tr:nth-child(odd) {
+  background: #f2f2f2;
+}
+table tr:nth-child(1) {
+  background: #4d7ef7;
+  color: #fff;
+}
+a {
+  color: #4d7ef7;
+  text-decoration: none;
+}
+a.add_post_link {
+  background: #4d7ef7;
+  color: #fff;
+  padding: 10px 80px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+}
+.ovalTable div {
+  margin-left: auto;
+  margin-right: auto;
 }
 .studentSpot div {
   height: 500px;
   width: 500px;
   border: 2px solid #47DAE7;
   position: center;
-  line-height: 1;
-}
-
-.ovalTable div {
-  margin-left: auto;
-  margin-right: auto;
-}
-#timer {
-  font-size: 20px;
   line-height: 1;
 }
 </style>

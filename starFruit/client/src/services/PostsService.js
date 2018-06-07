@@ -20,4 +20,8 @@ export default {
   deletePost (id) {
     return Api().delete('posts/' + id)
   }
+  /*
+  addDiscussion (params) {
+    return Api().disucssion('discussions', params)
+  } */
 }

@@ -19,14 +19,15 @@ db.once("open", function(callback){
   console.log("Connection Succeeded");
 });
 
-
-
 // Post model 
 var Post = require("../models/post");
 
 // CREATE: Add new post
 app.post('/posts', (req, res) => {
   var db = req.db;
+  var time = req.body.time;
+  var minutes = req.body.minutes;
+  var seconds = req.body.seconds;
   var name = req.body.name;
   var description = req.body.description;
   var knowledgePoint = req.body.knowledgePoint;
@@ -34,6 +35,9 @@ app.post('/posts', (req, res) => {
   var communicationPoint = req.body.communicationPoint;
   var applicationPoint = req.body.applicationPoint;
   var new_post = new Post({
+    time: time,
+    minutes: minutes,
+    seconds: seconds,
     name: name,
     description: description,
     knowledgePoint: knowledgePoint,
@@ -55,7 +59,7 @@ app.post('/posts', (req, res) => {
 
 // READ: Fetch all posts in descending order
 app.get('/posts', (req, res) => {
-  Post.find({}, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, posts) {
+  Post.find({}, 'time minutes seconds name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, posts) {
     if (error) { console.error(error); }
     res.send({
       posts: posts
@@ -66,7 +70,7 @@ app.get('/posts', (req, res) => {
 // UPDATE: Fetch single post
 app.get('/post/:id', (req, res) => {
   var db = req.db;
-  Post.findById(req.params.id, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, post) {
+  Post.findById(req.params.id, 'time minutes seconds name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, post) {
     if (error) { console.error(error); }
     res.send(post)
   })
@@ -75,9 +79,11 @@ app.get('/post/:id', (req, res) => {
 // Update a post
 app.put('/posts/:id', (req, res) => {
   var db = req.db;
-  Post.findById(req.params.id, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, post) {
+  Post.findById(req.params.id, 'time minutes seconds name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, post) {
     if (error) { console.error(error); }
-
+    post.time = req.body.time
+    post.minutes = req.body.minutes
+    post.seconds = req.body.seconds
     post.name = req.body.name
     post.description = req.body.description
     post.knowledgePoint = req.body.knowledgePoint
@@ -104,7 +110,7 @@ app.delete('/posts/:id', (req, res) => {
   }, function(err, post){
     if (err)
       res.send(err)
-      Post.find({}, 'name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, posts) {
+      Post.find({}, 'time minutes seconds name description knowledgePoint thinkingPoint communicationPoint applicationPoint', function (error, posts) {
       if (error) { console.error(error); }
      	res.send({
       		posts: posts
@@ -112,3 +118,23 @@ app.delete('/posts/:id', (req, res) => {
   	}).sort({_id:-1}) 
   })
 })
+
+/*
+// CREATE: Add new dicussion 
+app.discussion('/post', (req, res) => {
+  var db = req.db;
+  var dicussionTopic = req.body.dicussionTopic;
+  var new_post = new Post({
+    dicussionTopic: dicussionTopic,
+  })
+
+  new_post.save(function (error) {
+    if (error) {
+      console.log(error)
+    }
+    res.send({
+      success: true,
+      message: 'Discussion saved successfully!'
+    })
+  })
+}) */

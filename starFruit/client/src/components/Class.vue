@@ -6,13 +6,13 @@
       <div class="columns">
         <div class="column is-3">
           <aside class="menu">
-            <p  class="menu-list"><router-link v-bind:to="{ name: 'NewHarknessTable' }">Start New Harkness</router-link></p>
+            <p  class="menu-list"><router-link v-bind:to="{ name: 'HarknessTable' }">Start New Harkness</router-link></p>
             <p class="menu-label">Students</p>
             <ul class="menu-list" v-for="post in posts" :key="post.id">
               <li><router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">{{post.name}}</router-link></li>
             </ul>
             <ul class="menu-list">
-              <li><router-link v-bind:to="{ name: 'AddStudent' }">+ Add Student</router-link></li>
+              <li><router-link v-bind:to="{ name: 'AddStudent' }" class="">+ Add Student</router-link></li>
             </ul>
           </aside>
         </div>
