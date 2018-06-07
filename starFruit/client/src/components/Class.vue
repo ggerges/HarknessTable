@@ -8,8 +8,8 @@
           <aside class="menu">
             <p  class="menu-list"><router-link v-bind:to="{ name: 'NewHarknessTable' }">Start New Harkness</router-link></p>
             <p class="menu-label">Students</p>
-            <ul class="menu-list" v-for="post in posts" :key="post.id">
-              <li><router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">{{post.name}}</router-link></li>
+            <ul class="menu-list" v-for="student in students" :key="student.id">
+              <li><router-link v-bind:to="{ name: 'EditStudent', params: { id: student._id } }">{{student.name}}</router-link></li>
             </ul>
             <ul class="menu-list">
               <li><router-link v-bind:to="{ name: 'AddStudent' }">+ Add Student</router-link></li>
@@ -17,7 +17,7 @@
           </aside>
         </div>
         <div class ="column is-9">
-          <div v-if="posts.length > 0" class="table-wrap">
+          <div v-if="students.length > 0" class="table-wrap">
             <div>
               <router-link v-bind:to="{ name: 'AddStudent' }" class="">+ Add Student</router-link>
             </div>
@@ -31,23 +31,23 @@
                 <td>A</td>
                 <td align="center">Action</td>
               </tr>
-              <tr v-for="post in posts" :key="post.id">
-                <td>{{ post.name }}</td>
-                <td>{{ post.description }}</td>
-                <td>{{ post.knowledgePoint }}</td>
-                <td>{{ post.thinkingPoint }}</td>
-                <td>{{ post.communicationPoint }}</td>
-                <td>{{ post.applicationPoint }}</td>
+              <tr v-for="student in students" :key="student.id">
+                <td>{{ student.name }}</td>
+                <td>{{ student.description }}</td>
+                <td>{{ student.knowledgePoint }}</td>
+                <td>{{ student.thinkingPoint }}</td>
+                <td>{{ student.communicationPoint }}</td>
+                <td>{{ student.applicationPoint }}</td>
                 <td align="center">
-                  <router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">Edit</router-link> |
-                  <a href="#" @click="deletePost(post._id)">Delete</a>
+                  <router-link v-bind:to="{ name: 'EditStudent', params: { id: student._id } }">Edit</router-link> |
+                  <a href="#" @click="deletePost(student._id)">Delete</a>
                 </td>
               </tr>
             </table>
           </div>
           <div v-else>
             There are no students... Let's add one now <br /><br />
-            <router-link v-bind:to="{ name: 'AddStudent' }" class="add_post_link">Add Student</router-link>
+            <router-link v-bind:to="{ name: 'AddStudent' }" class="add_student_link">Add Student</router-link>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default {
   name: 'Class',
   data () {
     return {
-      posts: []
+      students: []
     }
   },
   mounted () {
@@ -80,11 +80,11 @@ export default {
   methods: {
     async getPosts () {
       const response = await PostsService.fetchPosts()
-      this.posts = response.data.posts
+      this.students = response.data.students
     },
     async deletePost (id) {
       const response = await PostsService.deletePost(id)
-      this.posts = response.data.posts
+      this.students = response.data.students
       this.$router.push({name: 'Class'})
     }
   }
@@ -125,7 +125,7 @@ a {
   color: #4d7ef7;
   text-decoration: none;
 }
-a.add_post_link {
+a.add_student_link {
   background: #4d7ef7;
   color: #fff;
   padding: 10px 80px;

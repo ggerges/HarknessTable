@@ -1,5 +1,5 @@
 <template>
-  <div class="posts">
+  <div>
     <h1>Add Student</h1>
       <div class="form">
         <div>
@@ -21,7 +21,7 @@
           <input type="text" name="applicationPoint" placeholder="APPLICATION POINTS" v-model="applicationPoint">
         </div>
         <div>
-          <button class="app_post_btn" @click="addPost">Add</button>
+          <button class="app_student_btn" @click="addPost">Add</button>
         </div>
       </div>
   </div>
@@ -68,7 +68,7 @@ export default {
 .form div {
   margin: 20px;
 }
-.app_post_btn {
+.app_student_btn {
   background: #4d7ef7;
   color: #fff;
   padding: 10px 80px;
