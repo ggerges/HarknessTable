@@ -34,10 +34,10 @@
               <tr v-for="post in posts" :key="post.id">
                 <td>{{ post.name }}</td>
                 <td>{{ post.description }}</td>
-                <td>{{ post.knowledgePoint }}</td>
-                <td>{{ post.thinkingPoint }}</td>
-                <td>{{ post.communicationPoint }}</td>
-                <td>{{ post.applicationPoint }}</td>
+                <td v-if="post.knowledgePoint !== null">{{ post.knowledgePoint }}</td><td v-else>0</td>
+                <td v-if="post.thinkingPoint !== null">{{ post.thinkingPoint }}</td><td v-else>0</td>
+                  <td v-if="post.communicationPoint !== null">{{ post.communicationPoint }}</td><td v-else>0</td>
+                  <td v-if="post.communicationPoint !== null">{{ post.applicationPoint }}</td><td v-else>0</td>
                 <td align="center">
                   <router-link v-bind:to="{ name: 'EditStudent', params: { id: post._id } }">Edit</router-link> |
                   <a href="#" @click="deletePost(post._id)">Delete</a>
