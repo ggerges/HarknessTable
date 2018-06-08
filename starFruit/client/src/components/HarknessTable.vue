@@ -33,7 +33,7 @@
                   <mark>NOTE: please print or screenshot the <i>review</i> table once you have finished with the buttons, then refer to the review table to update your students KTCA marks and include notes about their performance in the last table.</mark>
                   <br><br>
                   A more detailed list with the most <b>recent</b> student description and KTCA marks are shown in the last table (it works like the classroom one) down below. This is the database table.</p>
-              </div>      
+              </div>
             </div>
           </section>
           <br><br>

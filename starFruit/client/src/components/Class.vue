@@ -36,7 +36,7 @@
                 <br>
                 <h2 class="subtitle">Your student list is on the left column (click on names to edit student info). A more detailed list with the most <b>recent</b> student description and KTCA marks are shown in the center table. You can click on <b>+ Add Student</b> to add a new student, <b>Edit</b> to edit student info, and <b>Delete</b> to delete the student from your classroom list.</h2>
                 <p class="subtitle">This is a place for you to store the student info of your most recent harkness table discussion. <br><br>You can click on <b>Home Page</b> to go back to the home page or <b>Start New Harkness Table</b> to begin a new discussion.</p>
-              </div>      
+              </div>
             </div>
           </section>
           <br><br>
