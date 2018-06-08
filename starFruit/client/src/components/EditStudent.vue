@@ -1,4 +1,5 @@
 <template>
+  <!-- edit student .vue page -->
   <div class="posts">
     <h1>Edit Student</h1>
       <div class="form">
@@ -30,7 +31,7 @@
 <script>
 import PostsService from '@/services/PostsService'
 export default {
-  name: 'EditPost',
+  name: 'EditStudent',
   data () {
     return {
       name: '',

@@ -1,4 +1,5 @@
 <template>
+<!-- preliminary .vue page -->
   <div class="posts">
     <h1>Edit Post</h1>
       <div class="form">

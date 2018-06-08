@@ -1,4 +1,5 @@
 <template>
+  <!-- harkness .vue page: edit student  -->
   <div class="posts">
     <h1>Edit Student</h1>
       <div class="form">

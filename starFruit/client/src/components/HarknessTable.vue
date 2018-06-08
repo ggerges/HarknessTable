@@ -1,62 +1,83 @@
 <template>
+  <!-- 3) harkness table .vue page -->
   <div>
     <h1>Harkness Table Discussion</h1>
+    <hr>
     <br><br>
     <div class="container">
       <div class="columns">
+        <br>
+        <!-- left column -->
         <div class="column is-3">
           <aside class="menu">
-            <p  class="menu-list"><router-link v-bind:to="{ name: 'Class' }">Return to Class</router-link></p>
+            <!-- Link to classroom .vue -->
+            <p  class="menu-list"><router-link v-bind:to="{ name: 'Class' }">Return to Class</router-link></p><br>
+            <!-- list of students, editable -->
             <p class="menu-label">Students</p>
             <ul class="menu-list" v-for="post in posts" :key="post.id">
               <li><router-link v-bind:to="{ name: 'HarknessEditStudent', params: { id: post._id } }">{{post.name}}</router-link></li>
             </ul>
-            <button @click="testing(posts)">console testing</button>
+            <!-- <button @click="testing(posts)">console testing</button> -->
           </aside>
         </div>
         <div class ="column is-9">
           <!-- Put in an explanation paragraph -->
-          <!-- oval table -->
+          <section class="hero is-info welcome is-small">
+            <div class="hero-body">
+              <div class="intro">
+                <h1 class="title">Welcome!</h1>
+                <br>
+                <p class="subtitle">Your student list is on the left column (click on names to edit student info). <br>
+                  The oval is the traditional harkness table diagram. To complete the visual diagram, please drag and drop your student placements (all students in the list are created. They overlap each other by default) wherever they are seated in real life.You can increment/decrement the KTCA you have decided to award them, these marks will show up in the <b>Review</b> table below the diagram.
+                  <br><br>
+                  <mark>NOTE: please print or screenshot the <i>review</i> table once you have finished with the buttons, then refer to the review table to update your students KTCA marks and include notes about their performance in the last table.</mark>
+                  <br><br>
+                  A more detailed list with the most <b>recent</b> student description and KTCA marks are shown in the last table (it works like the classroom one) down below. This is the database table.</p>
+              </div>      
+            </div>
+          </section>
+          <br><br>
+          <!-- oval harkness table -->
           <div class="ovalTable">
-              <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400" :x="360" :y="100">
+              <vue-draggable-resizable :draggable="false" :resizable="false" :w="600" :h="400" :x="360" :y="700">
                 <img src="../assets/ovalTable.png">
               </vue-draggable-resizable>
           </div>
-          <!-- student spots -->
+          <!-- student "spots" (seat placements) -->
           <div class="studentSpot">
             <span v-for="post in posts" v-bind:key="post.id">
-              <vue-draggable-resizable :resizable="false" :w="120" :h="120" :x="300" :y="50">
+              <vue-draggable-resizable :resizable="false" :w="150" :h="180" :x="300" :y="550">
                 <br>
                 <p>{{ post.name }}</p>
                 <section>
-                  <button v:bind="post" @click="post.knowledgePoint++">+ K</button>
+                  <button class="styleButton" v:bind="post" @click="post.knowledgePoint++">+ K</button>
                   <span v-if="post.knowledgePoint !== null">{{ post.knowledgePoint }}</span>
                   <span v-else>0</span>
-                  <button v:bind="post" @click="post.knowledgePoint--">- K</button>
+                  <button class="styleButton" v:bind="post" @click="post.knowledgePoint--">- K</button>
                 </section>
                 <section>
-                  <button v:bind="post" @click="post.thinkingPoint++">+ K</button>
+                  <button class="styleButton" v:bind="post" @click="post.thinkingPoint++">+ T</button>
                   <span v-if="post.thinkingPoint !== null">{{ post.thinkingPoint }}</span>
                  <span v-else>0</span>
-                  <button v:bind="post" @click="post.thinkingPoint--">- K</button>
+                  <button class="styleButton" v:bind="post" @click="post.thinkingPoint--">- T</button>
                 </section>
                 <section>
-                  <button v:bind="post" @click="post.communicationPoint++">+ K</button>
+                  <button class="styleButton" v:bind="post" @click="post.communicationPoint++">+ C</button>
                   <span v-if="post.communicationPoint !== null">{{ post.communicationPoint }}</span>
                   <span v-else>0</span>
-                  <button v:bind="post" @click="post.communicationPoint--">- K</button>
+                  <button class="styleButton" v:bind="post" @click="post.communicationPoint--">- C</button>
                 </section>
                 <section>
-                  <button v:bind="post" @click="post.applicationPoint++">+ K</button>
+                  <button class="styleButton" v:bind="post" @click="post.applicationPoint++">+ A</button>
                   <span v-if="post.applicationPoint !== null">{{ post.applicationPoint }}</span>
                   <span v-else>0</span>
-                  <button v:bind="post" @click="post.applicationPoint--">- K</button>
+                  <button class="styleButton" v:bind="post" @click="post.applicationPoint--">- A</button>
                 </section>
               </vue-draggable-resizable>
             </span>
           </div>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <!-- Update Table -->
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <!-- This is to Update Table -->
           <h3>Review</h3>
           <section>
             <div v-if="posts.length > 0" class="table-wrap">
@@ -79,7 +100,7 @@
             </div>
           </section>
           <br><br>
-          <p>Please update the students' KTCA marks in the table below using this review</p>
+          <p>Please update the students' KTCA marks in the table below using this review. <br>Remember to screenshot or print the <b>review</b>.</p>
           <br>
           <section>
             <div v-if="posts.length > 0" class="table-wrap">
@@ -101,7 +122,7 @@
             </div>
             <div v-else>
               There are no students... Let's add one now <br /><br />
-              <router-link v-bind:to="{ name: 'HarknessAddStudent' }" class="add_post_link">Add Student</router-link>
+              <router-link v-bind:to="{ name: 'HarknessAddStudent' }" class="add_student_link">Add Student</router-link>
             </div>
           </section>
           <br><br><br>
@@ -156,12 +177,13 @@ export default {
         applicationPoint: this.applicationPoint
       })
       this.$router.push({ name: 'HarknessTable' })
-    },
+    }
+    /* ,
     testing: function (posts) {
       for (var i = 0; i < this.posts.length; i++) {
         console.log(this.posts[i].name + ', K: ' + this.posts[i].knowledgePoint)
       }
-    }
+    } */
   }
 }
 
@@ -175,6 +197,7 @@ h1 {
 }
 .hero-body div {
   text-align: left;
+  background-color:  #157DF0;
 }
 table {
   margin: 0 auto;
@@ -200,7 +223,7 @@ a {
   color: #4d7ef7;
   text-decoration: none;
 }
-a.add_post_link {
+a.add_student_link {
   background: #4d7ef7;
   color: #fff;
   padding: 10px 80px;
@@ -219,4 +242,31 @@ a.add_post_link {
   position: center;
   line-height: 1;
 }
+.title, .subtitle {
+  text-align: left;
+}
+mark {
+  background-color: #FE87F4;
+  color: white;
+}
+hr {
+  display: block;
+  border-top: 1px solid #D9D9D9;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+p {
+  font-size: 20px;
+}
+.styleButton {
+  font-family: "Cambria", "Book Antiqua", "Times New Roman", Times, Palatino, serif;
+  color: white;
+  border-radius: 2px;
+  padding: 2px 2px;
+  text-align: center;
+}
+
+/* blue: #157DF0 */
 </style>

@@ -1,4 +1,5 @@
 <template>
+<!-- preliminary .vue page -->
   <div class="posts">
     <h1>Posts</h1>
     <div v-if="posts.length > 0" class="table-wrap">

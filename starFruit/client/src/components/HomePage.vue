@@ -1,49 +1,27 @@
 <template>
+  <!-- 1) homePage .vue page -->
   <div>
     <h1>HOME PAGE</h1>
-    <!-- START NAV -->
-    <!-- <nav class="navbar is-white">
-      <div class="container">
-        <div class="navbar-brand">
-          <div class="navbar-burger burger" data-target="navMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-        <div id="navMenu" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" href="admin.html">
-              Home
-            </a>
-            <a class="navbar-item" href="admin.html">
-              Orders
-            </a>
-            <a class="navbar-item" href="admin.html">
-              Payments
-            </a>
-            <a class="navbar-item" href="admin.html">
-              Exceptions
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav> -->
+    <hr>
     <br><br>
     <div class="container">
       <div class="columns">
+        <!-- left column -->
         <div class="column is-3">
           <aside class="menu">
             <p class="menu-label">My Classes</p>
             <ul class="menu-list">
-              <li><router-link v-bind:to="{ name: 'Class' }" class="">ENG3U</router-link></li>
               <br>
+              <!-- link to set HZT4U Class -->
               <li><router-link v-bind:to="{ name: 'Class' }" class="">HZT4U</router-link></li>
               <br>
-              <li><router-link v-bind:to="{ name: 'NewAccount' }" class="">Add Class</router-link></li>
+              <!-- should set link to set add a new Class -->
+              <br>
+              <li class="">Add Class</li>
             </ul>
           </aside>
         </div>
+        <!-- center and left column -->
         <div class="column is-9">
           <section class="hero is-info welcome is-small">
             <div class="hero-body">
@@ -55,12 +33,10 @@
             </div>
           </section>
           <br><br>
+          <!-- class tiles -->
           <section class="info-tiles">
             <div class="tile is-ancestor has-text-centered">
               <div class="tile is-parent">
-                <article class="tile is-child box">
-                  <router-link v-bind:to="{ name: 'Class' }" class="">ENG3U</router-link>
-                </article>
               </div>
               <div class="tile is-parent">
                 <article class="tile is-child box">
@@ -68,14 +44,25 @@
                 </article>
               </div>
               <div class="tile is-parent">
-                <article class="tile is-child box">
-                  <router-link v-bind:to="{ name: 'NewAccount' }" class="">Add Class</router-link>
-                </article>
+                <article class="tile is-child box"><p class="">Add Class</p></article>
               </div>
             </div>
           </section>
         </div>
       </div>
+      <br><br><br>
+      <!-- Link to moqup -->
+      <p>Link to moqup:</p>
+      <ul>
+        <li>
+          <a
+            href="https://app.moqups.com/cmei@bayviewglen.ca/RXNwMvqPpa/view/page/a245a1a13"
+            target="_blank"
+          >
+            Go to Moqup
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -96,6 +83,8 @@ export default {
 .info-tiles div {
   font-size: 20px;
   text-align: center;
+  position: center;
+  display: block;
 }
 h1 {
   text-align: center;
@@ -113,5 +102,13 @@ li {
 }
 a {
   color: #42b983;
+}
+hr {
+  display: block;
+  border-top: 1px solid #D9D9D9;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 </style>

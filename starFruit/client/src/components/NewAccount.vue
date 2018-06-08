@@ -1,4 +1,5 @@
 <template>
+<!-- testing .vue page, not necessary -->
   <div class="hello">
     <h1>Hi!</h1>
     <h2>Create New Account</h2>

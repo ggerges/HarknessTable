@@ -1,5 +1,5 @@
 <template>
-
+<!-- testing .vue page, not necessary -->
   <div class="login">
      <div class="wrapper">
     <form class="form-signin">
