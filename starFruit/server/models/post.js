@@ -9,9 +9,10 @@ var PostSchema = new Schema({
   // discussionTopic: String,
   name: String,
   description: String, // dicussion notes concerning student
+  /*
   skills: {
   	knowledgePoint: Number
-  },
+  }, */
   knowledgePoint: Number,
   thinkingPoint: Number,
   communicationPoint: Number,
